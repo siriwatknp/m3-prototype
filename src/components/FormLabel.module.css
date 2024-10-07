@@ -16,7 +16,7 @@
 }
 
 @layer mui-components-error {
-  .Mui-error .root {
+  :global(.Mui-error) .root {
     --color: var(--md-sys-color-error);
   }
 }

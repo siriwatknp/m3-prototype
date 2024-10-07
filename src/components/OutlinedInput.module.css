@@ -49,7 +49,7 @@
 }
 
 @layer mui-components-error {
-  .Mui-error input ~ .fieldset {
+  :global(.Mui-error) input ~ .fieldset {
     --border-color: var(--md-sys-color-error);
   }
 }

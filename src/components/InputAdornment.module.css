@@ -31,7 +31,7 @@
 }
 
 @layer mui-components-error {
-  .Mui-error .root[data-last-child] {
+  :global(.Mui-error) .root[data-last-child] {
     --color: var(--md-sys-color-error);
   }
 }

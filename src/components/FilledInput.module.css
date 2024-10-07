@@ -21,7 +21,7 @@
 }
 
 @layer mui-components-error {
-  .Mui-error:has(input) .activeIndicator {
+  :global(.Mui-error):has(input) .activeIndicator {
     --background: var(--md-sys-color-error);
   }
 }

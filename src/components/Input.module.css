@@ -44,7 +44,7 @@
     --border-color: var(--md-sys-color-on-surface);
   }
 
-  .Mui-error .root {
+  :global(.Mui-error) .root {
     --border-color: var(--md-sys-color-error);
   }
 
@@ -52,7 +52,7 @@
     --outline: var(--focused-border-width) solid var(--md-sys-color-primary);
   }
 
-  .Mui-error .root:has(input:focus) {
+  :global(.Mui-error) .root:has(input:focus) {
     --outline: var(--focused-border-width) solid var(--md-sys-color-error);
   }
 
@@ -151,10 +151,10 @@
 }
 
 @layer mui-components-error {
-  .Mui-error .input {
+  :global(.Mui-error) .input {
     --caret-color: var(--md-sys-color-error);
   }
-  .Mui-error .floatingLabel {
+  :global(.Mui-error) .floatingLabel {
     --color: var(--md-sys-color-error);
   }
 }
