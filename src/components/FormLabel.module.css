@@ -1,0 +1,22 @@
+@layer mui-components {
+  .root {
+    --color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.875rem;
+    padding-inline: var(--i-padding-inline);
+    color: var(--color);
+    opacity: var(--i-opacity);
+
+    /* Typography styles from theme.typography['label-large'] */
+    font-family: var(--md-sys-typescale-label-large-font);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    font-size: var(--md-sys-typescale-label-large-size);
+    letter-spacing: var(--md-sys-typescale-label-large-tracking);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+  }
+}
+
+@layer mui-components-error {
+  .Mui-error .root {
+    --color: var(--md-sys-color-error);
+  }
+}

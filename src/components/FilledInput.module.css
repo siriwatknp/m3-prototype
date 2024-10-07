@@ -1,0 +1,33 @@
+@layer mui-components {
+  .root {
+  }
+
+  .activeIndicator {
+    --_height: 1px;
+    --background: var(--sys-color-on-surface-variant);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--_height);
+    background: var(--background);
+    transition: height 0.1s;
+  }
+
+  input:focus ~ .activeIndicator {
+    --_height: var(--focused-border-width);
+    --background: var(--focused-border-color);
+  }
+}
+
+@layer mui-components-error {
+  .Mui-error:has(input) .activeIndicator {
+    --background: var(--md-sys-color-error);
+  }
+}
+
+@layer mui-components-disabled {
+  input:disabled ~ .activeIndicator {
+    --background: var(--i-disabled-color);
+  }
+}

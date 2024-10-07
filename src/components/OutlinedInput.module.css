@@ -1,0 +1,65 @@
+@layer mui-components {
+  .root {
+  }
+
+  .fieldset {
+    position: absolute;
+    inset: 0;
+    top: calc(var(--label-shrink-top));
+    margin: 0;
+    padding: 0;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    pointer-events: none;
+  }
+
+  input:focus ~ .fieldset {
+    --border-width: var(--focused-border-width);
+    --border-color: var(--md-sys-color-primary);
+  }
+
+  .legend {
+    --_gutter: 0px;
+    --_max-width: 0.01px;
+    visibility: hidden;
+    max-width: var(--_max-width);
+    margin-left: calc(
+      var(--padding-left) - var(--border-width) - var(--_gutter) +
+        var(--label-inset)
+    ); /* border-width and padding */
+    padding: 0 var(--_gutter);
+    display: inline-flex;
+    font-family: var(--md-sys-typescale-body-large-font);
+    font-size: var(--label-shrink-font-size);
+    font-weight: var(--md-sys-typescale-body-large-weight);
+    line-height: var(--label-shrink-line-height);
+    white-space: nowrap;
+  }
+
+  input:focus ~ fieldset .legend,
+  input:not(:placeholder-shown) ~ fieldset .legend {
+    --_gutter: 3px;
+    --_max-width: none;
+  }
+
+  .legend:has(.notranslate) {
+    --_max-width: 0.01px !important;
+    --_gutter: 0px !important;
+  }
+}
+
+@layer mui-components-error {
+  .Mui-error input ~ .fieldset {
+    --border-color: var(--md-sys-color-error);
+  }
+}
+
+@layer mui-components-outlined {
+  input:disabled ~ .fieldset {
+    --border-color: color-mix(
+      in srgb,
+      var(--md-sys-color-on-surface) 12%,
+      transparent
+    );
+  }
+}
