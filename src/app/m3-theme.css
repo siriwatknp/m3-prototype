@@ -104,10 +104,95 @@
   --md-sys-shape-corner-extra-small: 4px;
   --md-sys-shape-corner-none: 0px;
   --md-sys-state-hover-state-layer-opacity: 0.08;
+  --md-sys-state-focus-state-layer-opacity: 0.1;
+  --md-sys-state-pressed-state-layer-opacity: 0.1;
   --md-ref-typeface-brand: var(--font-geist-sans);
   --md-ref-typeface-plain: var(--font-geist-sans);
-  --md-ref-typeface-weight-medium: 500px;
-  --md-ref-typeface-weight-regular: 400px;
+  --md-ref-typeface-weight-medium: 500;
+  --md-ref-typeface-weight-regular: 400;
+  --md-sys-elevation-level1: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+  --md-sys-elevation-level2: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
+    rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
+  --md-sys-elevation-level3: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+  --md-sys-elevation-level4: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+  --md-sys-elevation-level5: rgba(0, 0, 0, 0.2) 0px 7px 8px -4px,
+    rgba(0, 0, 0, 0.14) 0px 12px 17px 2px, rgba(0, 0, 0, 0.12) 0px 5px 22px 4px;
+  --md-sys-elevation-surface-tint: var(--md-sys-color-primary);
+  --md-sys-state-focus-indicator-thickness: 2px;
+  --md-sys-state-focus-indicator-outer-offset: 2px;
+
+  /** add-on variables **/
+  --md-ref-typescale-display-large: var(--md-sys-typescale-display-large-weight)
+    var(--md-sys-typescale-display-large-size) /
+    var(--md-sys-typescale-display-large-line-height)
+    var(--md-sys-typescale-display-large-font);
+  --md-ref-typescale-display-medium: var(
+      --md-sys-typescale-display-medium-weight
+    )
+    var(--md-sys-typescale-display-medium-size) /
+    var(--md-sys-typescale-display-medium-line-height)
+    var(--md-sys-typescale-display-medium-font);
+  --md-ref-typescale-display-small: var(--md-sys-typescale-display-small-weight)
+    var(--md-sys-typescale-display-small-size) /
+    var(--md-sys-typescale-display-small-line-height)
+    var(--md-sys-typescale-display-small-font);
+  --md-ref-typescale-headline-large: var(
+      --md-sys-typescale-headline-large-weight
+    )
+    var(--md-sys-typescale-headline-large-size) /
+    var(--md-sys-typescale-headline-large-line-height)
+    var(--md-sys-typescale-headline-large-font);
+  --md-ref-typescale-headline-medium: var(
+      --md-sys-typescale-headline-medium-weight
+    )
+    var(--md-sys-typescale-headline-medium-size) /
+    var(--md-sys-typescale-headline-medium-line-height)
+    var(--md-sys-typescale-headline-medium-font);
+  --md-ref-typescale-headline-small: var(
+      --md-sys-typescale-headline-small-weight
+    )
+    var(--md-sys-typescale-headline-small-size) /
+    var(--md-sys-typescale-headline-small-line-height)
+    var(--md-sys-typescale-headline-small-font);
+  --md-ref-typescale-title-large: var(--md-sys-typescale-title-large-weight)
+    var(--md-sys-typescale-title-large-size) /
+    var(--md-sys-typescale-title-large-line-height)
+    var(--md-sys-typescale-title-large-font);
+  --md-ref-typescale-title-medium: var(--md-sys-typescale-title-medium-weight)
+    var(--md-sys-typescale-title-medium-size) /
+    var(--md-sys-typescale-title-medium-line-height)
+    var(--md-sys-typescale-title-medium-font);
+  --md-ref-typescale-title-small: var(--md-sys-typescale-title-small-weight)
+    var(--md-sys-typescale-title-small-size) /
+    var(--md-sys-typescale-title-small-line-height)
+    var(--md-sys-typescale-title-small-font);
+  --md-ref-typescale-body-large: var(--md-sys-typescale-body-large-weight)
+    var(--md-sys-typescale-body-large-size) /
+    var(--md-sys-typescale-body-large-line-height)
+    var(--md-sys-typescale-body-large-font);
+  --md-ref-typescale-body-medium: var(--md-sys-typescale-body-medium-weight)
+    var(--md-sys-typescale-body-medium-size) /
+    var(--md-sys-typescale-body-medium-line-height)
+    var(--md-sys-typescale-body-medium-font);
+  --md-ref-typescale-body-small: var(--md-sys-typescale-body-small-weight)
+    var(--md-sys-typescale-body-small-size) /
+    var(--md-sys-typescale-body-small-line-height)
+    var(--md-sys-typescale-body-small-font);
+  --md-ref-typescale-label-large: var(--md-sys-typescale-label-large-weight)
+    var(--md-sys-typescale-label-large-size) /
+    var(--md-sys-typescale-label-large-line-height)
+    var(--md-sys-typescale-label-large-font);
+  --md-ref-typescale-label-medium: var(--md-sys-typescale-label-medium-weight)
+    var(--md-sys-typescale-label-medium-size) /
+    var(--md-sys-typescale-label-medium-line-height)
+    var(--md-sys-typescale-label-medium-font);
+  --md-ref-typescale-label-small: var(--md-sys-typescale-label-small-weight)
+    var(--md-sys-typescale-label-small-size) /
+    var(--md-sys-typescale-label-small-line-height)
+    var(--md-sys-typescale-label-small-font);
 }
 
 :root {
