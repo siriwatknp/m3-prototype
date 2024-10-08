@@ -2,6 +2,7 @@
   --height: 40px;
   --padding-inline: 24px;
   --gap: 8px;
+  --border: none;
   --border-radius: 0px;
   --box-shadow: none;
   --background: transparent;
@@ -19,7 +20,7 @@
   -webkit-tap-highlight-color: transparent;
   /* We disable the focus ring for mouse, touch and keyboard users. */
   outline: 0;
-  border: 0;
+  border: var(--border);
   margin: 0; /* Remove the margin in Safari */
   border-radius: 0;
   padding: 0; /* Remove the padding in Firefox */
@@ -64,7 +65,6 @@
 
 .MuiButton-elevated {
   --border-radius: var(--md-sys-shape-corner-full);
-  --height: 40px;
   --box-shadow: var(--md-sys-elevation-level1);
   --background: var(--md-sys-color-surface-container-low);
   --color: var(--md-sys-color-primary);
@@ -81,8 +81,6 @@
 
   &:focus-visible {
     --box-shadow: var(--md-sys-elevation-level1);
-    --outline: var(--md-sys-state-focus-indicator-thickness) solid
-      var(--md-sys-color-secondary);
     --background: color-mix(
       in srgb,
       var(--md-sys-color-surface-container-low),
@@ -118,7 +116,6 @@
 
 .MuiButton-filled {
   --border-radius: var(--md-sys-shape-corner-full);
-  --height: 40px;
   --box-shadow: var(--md-sys-elevation-level0);
   --background: var(--md-sys-color-primary);
   --color: var(--md-sys-color-on-primary);
@@ -135,8 +132,6 @@
 
   &:focus-visible {
     --box-shadow: var(--md-sys-elevation-level0);
-    --outline: var(--md-sys-state-focus-indicator-thickness) solid
-      var(--md-sys-color-secondary);
     --background: color-mix(
       in srgb,
       var(--md-sys-color-primary),
@@ -167,6 +162,145 @@
       transparent
     );
     --box-shadow: var(--md-sys-elevation-level0);
+  }
+}
+
+.MuiButton-filledTonal {
+  --background: var(--md-sys-color-secondary-container);
+  --box-shadow: var(--md-sys-elevation-level0);
+  --border-radius: var(--md-sys-shape-corner-full);
+  --color: var(--md-sys-color-on-secondary-container);
+
+  &:hover {
+    --box-shadow: var(--md-sys-elevation-level1);
+    --background: color-mix(
+      in srgb,
+      var(--md-sys-color-secondary-container),
+      var(--md-sys-color-on-secondary-container)
+        calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:focus-visible {
+    --box-shadow: var(--md-sys-elevation-level0);
+    --background: color-mix(
+      in srgb,
+      var(--md-sys-color-secondary-container),
+      var(--md-sys-color-on-secondary-container)
+        calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:active {
+    --box-shadow: var(--md-sys-elevation-level0);
+    --background: color-mix(
+      in srgb,
+      var(--md-sys-color-secondary-container),
+      var(--md-sys-color-on-secondary-container)
+        calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:disabled {
+    --color: color-mix(
+      in srgb,
+      var(--md-sys-color-on-surface) 38%,
+      transparent
+    );
+    --background: color-mix(
+      in srgb,
+      var(--md-sys-color-on-surface) 12%,
+      transparent
+    );
+    --box-shadow: var(--md-sys-elevation-level0);
+  }
+}
+
+.MuiButton-outlined {
+  --border-radius: var(--md-sys-shape-corner-full);
+  --border: 1px solid var(--md-sys-color-outline);
+  --color: var(--md-sys-color-primary);
+
+  &:hover {
+    --color: var(--md-sys-color-primary);
+    --background: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-primary)
+        calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+    );
+    --border: 1px solid var(--md-sys-color-outline);
+  }
+
+  &:focus-visible {
+    --background: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-primary)
+        calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+    );
+    --border: 1px solid var(--md-sys-color-primary);
+  }
+
+  &:active {
+    --border: 1px solid var(--md-sys-color-outline);
+    --background: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-primary)
+        calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:disabled {
+    --color: color-mix(
+      in srgb,
+      var(--md-sys-color-on-surface) 38%,
+      transparent
+    );
+    --border: 1px solid
+      color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+  }
+}
+
+.MuiButton-text {
+  --border-radius: var(--md-sys-shape-corner-full);
+  --color: md.sys.color.primary;
+
+  &:hover {
+    --background: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-primary)
+        calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:focus-visible {
+    --background: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-primary)
+        calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:active {
+    --background: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-primary)
+        calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+    );
+  }
+
+  &:disabled {
+    --background: transparent;
+    --color: color-mix(
+      in srgb,
+      var(--md-sys-color-on-surface) 38%,
+      transparent
+    );
   }
 }
 

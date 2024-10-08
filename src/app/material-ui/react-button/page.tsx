@@ -2,7 +2,7 @@ import Button from "@/components/Button/Button";
 
 export default function TextFieldPage() {
   return (
-    <div className="prose container mx-auto py-5 px-2">
+    <div className="prose max-w-[max-content] mx-auto py-5 px-2">
       <h1>Text Field Example</h1>
 
       <h2>Base Button</h2>
@@ -14,8 +14,10 @@ export default function TextFieldPage() {
 
       <div className="flex rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
         <Button variant="elevated">Elevated</Button>
-
         <Button variant="filled">Filled</Button>
+        <Button variant="filledTonal">Filled Tonal</Button>
+        <Button variant="outlined">Outlined</Button>
+        <Button variant="text">Text</Button>
       </div>
 
       <h2>Disabled</h2>
