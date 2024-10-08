@@ -265,7 +265,7 @@
 
 .MuiButton-text {
   --border-radius: var(--md-sys-shape-corner-full);
-  --color: md.sys.color.primary;
+  --color: var(--md-sys-color-primary);
 
   &:hover {
     --background: color-mix(
