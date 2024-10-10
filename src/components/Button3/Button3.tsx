@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   className = "",
   color,
-  variant,
+  variant = "outlined",
   onClick,
   startIcon,
   endIcon,
