@@ -1,5 +1,4 @@
 import React from "react";
-import "./Button2.css";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -23,15 +22,15 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`MuiButton-root ${variant ? `MuiButton-${variant}` : ""} ${
-        color ? `MuiButton-${color}` : ""
+      className={`MuiButton2-root ${variant ? `MuiButton2-${variant}` : ""} ${
+        color ? `MuiButton2-${color}` : ""
       } ${className}`}
       onClick={onClick}
       {...other}
     >
-      {startIcon && <span className="MuiButton-startIcon">{startIcon}</span>}
+      {startIcon && <span className="MuiButton2-startIcon">{startIcon}</span>}
       {children}
-      {endIcon && <span className="MuiButton-startIcon">{endIcon}</span>}
+      {endIcon && <span className="MuiButton2-startIcon">{endIcon}</span>}
     </button>
   );
 };

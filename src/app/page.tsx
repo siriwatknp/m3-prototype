@@ -36,6 +36,10 @@ const components: ComponentItem[] = [
         version: "dynamic colors + inline style",
         route: "/material-ui/react-button3",
       },
+      {
+        version: "dynamic colors + inline style + public vars",
+        route: "/material-ui/react-button4",
+      },
     ],
   },
 ];
@@ -43,7 +47,7 @@ const components: ComponentItem[] = [
 export default function ComponentList() {
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6">Components</h1>
+      <h1 className="text-3xl font-bold mb-6">Component List</h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {components.map((component) => (
           <Card key={component.name}>
@@ -58,7 +62,7 @@ export default function ComponentList() {
             </CardContent>
             <CardContent>
               <h3 className="font-semibold mb-2">Versions:</h3>
-              <ul className="list-none pl-0 space-y-2">
+              <ul className="list-none pl-0 flex flex-col gap-2">
                 {component.versions.map((version) => (
                   <li key={version.version}>
                     <Link

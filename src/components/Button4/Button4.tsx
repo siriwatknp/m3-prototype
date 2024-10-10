@@ -22,8 +22,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`MuiButton3-root ${variant ? `MuiButton3-${variant}` : ""} ${
-        color ? `MuiButton3-${color}` : ""
+      className={`MuiButton4-root ${variant ? `MuiButton4-${variant}` : ""} ${
+        color ? `MuiButton4-${color}` : ""
       } ${className}`}
       onClick={onClick}
       {...other}
@@ -54,9 +54,9 @@ const Button: React.FC<ButtonProps> = ({
         } as React.CSSProperties
       }
     >
-      {startIcon && <span className="MuiButton3-startIcon">{startIcon}</span>}
+      {startIcon && <span className="MuiButton4-startIcon">{startIcon}</span>}
       {children}
-      {endIcon && <span className="MuiButton3-startIcon">{endIcon}</span>}
+      {endIcon && <span className="MuiButton4-startIcon">{endIcon}</span>}
     </button>
   );
 };

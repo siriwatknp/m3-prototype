@@ -1,14 +1,13 @@
 /* Slots */
-.MuiButton2-root {
-  --height: 40px;
-  --padding-inline: 24px;
+.MuiButton4-root {
+  --height: var(--md-comp-button-height, 40px);
+  --padding-inline: var(--md-comp-button-padding-inline, 24px);
   --gap: 8px;
   --border-width: 0px;
   --border-color: transparent;
   --border-radius: 0px;
   --box-shadow: none;
   --background: transparent;
-  --background-state: var(--background);
   --color: inherit;
   --icon-size: 18px;
   --outline: none;
@@ -84,18 +83,18 @@
   }
 }
 
-.MuiButton2-root::-moz-focus-inner {
+.MuiButton4-root::-moz-focus-inner {
   border-style: none; /* Remove Firefox dotted outline. */
 }
 
 @media print {
-  .MuiButton2-root {
+  .MuiButton4-root {
     color-adjust: exact;
   }
 }
 
-.MuiButton2-startIcon,
-.MuiButton2-endIcon {
+.MuiButton4-startIcon,
+.MuiButton4-endIcon {
   font-size: var(--icon-size);
 
   & svg {
@@ -106,11 +105,17 @@
 /* ======================================================== */
 
 /* variants */
-.MuiButton2-elevated {
-  --border-radius: var(--md-sys-shape-corner-full);
+.MuiButton4-elevated {
+  --border-radius: var(
+    --md-comp-button-elevated-corner,
+    var(--md-sys-shape-corner-full)
+  );
   --box-shadow: var(--md-sys-elevation-level1);
-  --color: var(--md-sys-color-primary);
-  --background: var(--md-sys-color-surface-container-low);
+  --color: var(--md-comp-button-elevated-color, var(--md-sys-color-primary));
+  --background: var(
+    --md-comp-button-elevated-background,
+    var(--md-sys-color-surface-container-low)
+  );
 
   &:hover {
     --box-shadow: var(--md-sys-elevation-level2);
@@ -125,7 +130,7 @@
   }
 }
 
-.MuiButton2-filled {
+.MuiButton4-filled {
   --border-radius: var(--md-sys-shape-corner-full);
   --box-shadow: var(--md-sys-elevation-level0);
   --background: var(--md-sys-color-primary);
@@ -144,7 +149,7 @@
   }
 }
 
-.MuiButton2-filledTonal {
+.MuiButton4-filledTonal {
   --background: var(--md-sys-color-secondary-container);
   --box-shadow: var(--md-sys-elevation-level0);
   --border-radius: var(--md-sys-shape-corner-full);
@@ -163,7 +168,7 @@
   }
 }
 
-.MuiButton2-outlined {
+.MuiButton4-outlined {
   --border-radius: var(--md-sys-shape-corner-full);
   --border-width: 1px;
   --border-color: var(--md-sys-color-outline);
@@ -178,64 +183,7 @@
   }
 }
 
-.MuiButton2-text {
+.MuiButton4-text {
   --border-radius: var(--md-sys-shape-corner-full);
   --color: var(--md-sys-color-primary);
-}
-
-/* ======================================================== */
-
-/* colors */
-.MuiButton2-elevated.MuiButton2-secondary {
-  --color: var(--md-sys-color-secondary);
-}
-.MuiButton2-filled.MuiButton2-secondary {
-  --color: var(--md-sys-color-on-secondary);
-  --background: var(--md-sys-color-secondary);
-}
-.MuiButton2-filledTonal.MuiButton2-secondary {
-  --color: var(--md-sys-color-on-secondary-container);
-  --background: var(--md-sys-color-secondary-container);
-}
-.MuiButton2-outlined.MuiButton2-secondary {
-  --color: var(--md-sys-color-secondary);
-}
-.MuiButton2-text.MuiButton2-secondary {
-  --color: var(--md-sys-color-secondary);
-}
-
-.MuiButton2-elevated.MuiButton2-tertiary {
-  --color: var(--md-sys-color-tertiary);
-}
-.MuiButton2-filled.MuiButton2-tertiary {
-  --color: var(--md-sys-color-on-tertiary);
-  --background: var(--md-sys-color-tertiary);
-}
-.MuiButton2-filledTonal.MuiButton2-tertiary {
-  --color: var(--md-sys-color-on-tertiary-container);
-  --background: var(--md-sys-color-tertiary-container);
-}
-.MuiButton2-outlined.MuiButton2-tertiary {
-  --color: var(--md-sys-color-tertiary);
-}
-.MuiButton2-text.MuiButton2-tertiary {
-  --color: var(--md-sys-color-tertiary);
-}
-
-.MuiButton2-elevated.MuiButton2-error {
-  --color: var(--md-sys-color-error);
-}
-.MuiButton2-filled.MuiButton2-error {
-  --color: var(--md-sys-color-on-error);
-  --background: var(--md-sys-color-error);
-}
-.MuiButton2-filledTonal.MuiButton2-error {
-  --color: var(--md-sys-color-on-error-container);
-  --background: var(--md-sys-color-error-container);
-}
-.MuiButton2-outlined.MuiButton2-error {
-  --color: var(--md-sys-color-error);
-}
-.MuiButton2-text.MuiButton2-error {
-  --color: var(--md-sys-color-error);
 }

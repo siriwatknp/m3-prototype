@@ -1,5 +1,5 @@
 /* Slots */
-.MuiButton-root {
+.MuiButton3-root {
   --height: 40px;
   --padding-inline: 24px;
   --gap: 8px;
@@ -83,18 +83,18 @@
   }
 }
 
-.MuiButton-root::-moz-focus-inner {
+.MuiButton3-root::-moz-focus-inner {
   border-style: none; /* Remove Firefox dotted outline. */
 }
 
 @media print {
-  .MuiButton-root {
+  .MuiButton3-root {
     color-adjust: exact;
   }
 }
 
-.MuiButton-startIcon,
-.MuiButton-endIcon {
+.MuiButton3-startIcon,
+.MuiButton3-endIcon {
   font-size: var(--icon-size);
 
   & svg {
@@ -105,7 +105,7 @@
 /* ======================================================== */
 
 /* variants */
-.MuiButton-elevated {
+.MuiButton3-elevated {
   --border-radius: var(--md-sys-shape-corner-full);
   --box-shadow: var(--md-sys-elevation-level1);
   --color: var(--md-sys-color-primary);
@@ -124,7 +124,7 @@
   }
 }
 
-.MuiButton-filled {
+.MuiButton3-filled {
   --border-radius: var(--md-sys-shape-corner-full);
   --box-shadow: var(--md-sys-elevation-level0);
   --background: var(--md-sys-color-primary);
@@ -143,7 +143,7 @@
   }
 }
 
-.MuiButton-filledTonal {
+.MuiButton3-filledTonal {
   --background: var(--md-sys-color-secondary-container);
   --box-shadow: var(--md-sys-elevation-level0);
   --border-radius: var(--md-sys-shape-corner-full);
@@ -162,7 +162,7 @@
   }
 }
 
-.MuiButton-outlined {
+.MuiButton3-outlined {
   --border-radius: var(--md-sys-shape-corner-full);
   --border-width: 1px;
   --border-color: var(--md-sys-color-outline);
@@ -177,7 +177,7 @@
   }
 }
 
-.MuiButton-text {
+.MuiButton3-text {
   --border-radius: var(--md-sys-shape-corner-full);
   --color: var(--md-sys-color-primary);
 }
