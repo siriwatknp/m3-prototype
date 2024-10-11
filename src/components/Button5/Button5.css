@@ -1,0 +1,565 @@
+/* Slots */
+.MuiButton5-root {
+  height: 40px;
+  padding-inline: 24px;
+  gap: 8px;
+  border-radius: var(--md-comp-button-corner, var(--md-sys-shape-corner-full));
+  box-shadow: none;
+  background: transparent;
+  color: inherit;
+  font-size: var(--md-sys-typescale-label-large-size);
+  outline: none;
+  outline-offset: 2px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0; /* Remove the margin in Safari */
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none; /* Reset */
+  -webkit-appearance: none; /* Reset */
+  text-decoration: none;
+  /* So we take precedent over the style of a native <a /> element. */
+  font-family: var(--md-sys-typescale-label-large-font);
+  font-weight: var(--md-sys-typescale-label-large-weight);
+  line-height: var(--md-sys-typescale-label-large-line-height);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+
+  &:focus-visible {
+    outline: var(--md-sys-state-focus-indicator-thickness) solid
+      var(--md-sys-color-secondary);
+  }
+
+  &:disabled {
+    pointer-events: none; /* Disable link interactions */
+    cursor: default;
+  }
+}
+
+.MuiButton5-root::-moz-focus-inner {
+  border-style: none; /* Remove Firefox dotted outline. */
+}
+
+@media print {
+  .MuiButton5-root {
+    color-adjust: exact;
+  }
+}
+
+.MuiButton5-startIcon,
+.MuiButton5-endIcon {
+  font-size: 18px;
+
+  & svg:not([class]) {
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+/* ======================================================== */
+
+/* variants */
+.MuiButton5-elevated {
+  box-shadow: var(
+    --md-comp-button-elevated-shadow,
+    var(--md-sys-elevation-level1)
+  );
+  color: var(--md-comp-button-elevated-color, var(--md-sys-color-primary));
+  background: var(
+    --md-comp-button-elevated-background,
+    var(--md-sys-color-surface-container-low)
+  );
+
+  &:hover {
+    box-shadow: var(
+      --md-comp-button-elevated-hover-shadow,
+      var(--md-sys-elevation-level2)
+    );
+    background: var(
+      --md-comp-button-elevated-hover-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-surface-container-low),
+        currentColor calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:focus {
+    box-shadow: var(
+      --md-comp-button-elevated-focus-shadow,
+      var(--md-sys-elevation-level1)
+    );
+    background: var(
+      --md-comp-button-elevated-focus-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-surface-container-low),
+        currentColor calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:active {
+    box-shadow: var(
+      --md-comp-button-elevated-active-shadow,
+      var(--md-sys-elevation-level1)
+    );
+    background: var(
+      --md-comp-button-elevated-active-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-surface-container-low),
+        currentColor
+          calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:disabled {
+    color: var(
+      --md-comp-button-elevated-disabled-color,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent)
+    );
+    background: var(
+      --md-comp-button-elevated-disabled-background,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent)
+    );
+    box-shadow: var(
+      --md-comp-button-elevated-disabled-shadow,
+      var(--md-sys-elevation-level0)
+    );
+  }
+
+  &:where(.MuiButton5-error:not(:disabled)) {
+    color: var(--md-comp-button-elevated-color, var(--md-sys-color-error));
+  }
+}
+
+.MuiButton5-filled {
+  box-shadow: var(
+    --md-comp-button-filled-shadow,
+    var(--md-sys-elevation-level0)
+  );
+  background: var(
+    --md-comp-button-filled-background,
+    var(--md-sys-color-primary)
+  );
+  color: var(--md-comp-button-filled-color, var(--md-sys-color-on-primary));
+
+  &:hover {
+    box-shadow: var(
+      --md-comp-button-filled-hover-shadow,
+      var(--md-sys-elevation-level1)
+    );
+    background: var(
+      --md-comp-button-filled-hover-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-primary),
+        currentColor calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:focus {
+    box-shadow: var(
+      --md-comp-button-filled-focus-shadow,
+      var(--md-sys-elevation-level0)
+    );
+    background: var(
+      --md-comp-button-filled-focus-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-primary),
+        currentColor calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:active {
+    box-shadow: var(
+      --md-comp-button-filled-active-shadow,
+      var(--md-sys-elevation-level0)
+    );
+    background: var(
+      --md-comp-button-filled-active-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-primary),
+        currentColor
+          calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:disabled {
+    color: var(
+      --md-comp-button-filled-disabled-color,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent)
+    );
+    background: var(
+      --md-comp-button-filled-disabled-background,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent)
+    );
+    box-shadow: var(
+      --md-comp-button-filled-disabled-shadow,
+      var(--md-sys-elevation-level0)
+    );
+  }
+
+  &:where(.MuiButton5-error:not(:disabled)) {
+    background: var(
+      --md-comp-button-filled-background,
+      var(--md-sys-color-error)
+    );
+    color: var(--md-comp-button-filled-color, var(--md-sys-color-on-error));
+
+    &:hover {
+      background: var(
+        --md-comp-button-filled-hover-background,
+        color-mix(
+          in srgb,
+          var(--md-sys-color-error),
+          currentColor
+            calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+        )
+      );
+    }
+
+    &:focus {
+      background: var(
+        --md-comp-button-filled-focus-background,
+        color-mix(
+          in srgb,
+          var(--md-sys-color-error),
+          currentColor
+            calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+        )
+      );
+    }
+
+    &:active {
+      background: var(
+        --md-comp-button-filled-active-background,
+        color-mix(
+          in srgb,
+          var(--md-sys-color-error),
+          currentColor
+            calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+        )
+      );
+    }
+  }
+}
+
+.MuiButton5-filledTonal {
+  background: var(
+    --md-comp-button-filledTonal-background,
+    var(--md-sys-color-secondary-container)
+  );
+  box-shadow: var(
+    --md-comp-button-filledTonal-shadow,
+    var(--md-sys-elevation-level0)
+  );
+  color: var(
+    --md-comp-button-filledTonal-color,
+    var(--md-sys-color-on-secondary-container)
+  );
+
+  &:hover {
+    box-shadow: var(
+      --md-comp-button-filledTonal-hover-shadow,
+      var(--md-sys-elevation-level1)
+    );
+    background: var(
+      --md-comp-button-filledTonal-hover-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-secondary-container),
+        currentColor calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:focus {
+    box-shadow: var(
+      --md-comp-button-filledTonal-focus-shadow,
+      var(--md-sys-elevation-level0)
+    );
+    background: var(
+      --md-comp-button-filledTonal-focus-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-secondary-container),
+        currentColor calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:active {
+    box-shadow: var(
+      --md-comp-button-filledTonal-active-shadow,
+      var(--md-sys-elevation-level0)
+    );
+    background: var(
+      --md-comp-button-filledTonal-active-background,
+      color-mix(
+        in srgb,
+        var(--md-sys-color-secondary-container),
+        currentColor
+          calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:disabled {
+    color: var(
+      --md-comp-button-filledTonal-disabled-color,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent)
+    );
+    background: var(
+      --md-comp-button-filledTonal-disabled-background,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent)
+    );
+    box-shadow: var(
+      --md-comp-button-filledTonal-disabled-shadow,
+      var(--md-sys-elevation-level0)
+    );
+  }
+
+  &:where(.MuiButton5-error:not(:disabled)) {
+    color: var(--md-comp-button-filledTonal-color, var(--md-sys-color-error));
+    background: var(
+      --md-comp-button-filledTonal-background,
+      var(--md-sys-color-error-container)
+    );
+
+    &:hover {
+      background: var(
+        --md-comp-button-filledTonal-hover-background,
+        color-mix(
+          in srgb,
+          var(--md-sys-color-error-container),
+          currentColor
+            calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+        )
+      );
+    }
+
+    &:focus {
+      background: var(
+        --md-comp-button-filledTonal-focus-background,
+        color-mix(
+          in srgb,
+          var(--md-sys-color-error-container),
+          currentColor
+            calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+        )
+      );
+    }
+
+    &:active {
+      background: var(
+        --md-comp-button-filledTonal-active-background,
+        color-mix(
+          in srgb,
+          var(--md-sys-color-error-container),
+          currentColor
+            calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+        )
+      );
+    }
+  }
+}
+
+.MuiButton5-outlined {
+  background: var(--md-comp-button-outlined-background, transparent);
+  border-width: var(--md-comp-button-outlined-border-width, 1px);
+  border-color: var(
+    --md-comp-button-outlined-border-color,
+    var(--md-sys-color-outline)
+  );
+  color: var(--md-comp-button-outlined-color, var(--md-sys-color-primary));
+
+  &:hover {
+    background: var(
+      --md-comp-button-outlined-hover-background,
+      color-mix(
+        in srgb,
+        transparent,
+        currentColor calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:focus {
+    background: var(
+      --md-comp-button-outlined-focus-background,
+      color-mix(
+        in srgb,
+        transparent,
+        currentColor calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+      )
+    );
+    border-color: var(
+      --md-comp-button-outlined-focus-border-color,
+      var(--md-sys-color-primary)
+    );
+  }
+
+  &:active {
+    background: var(
+      --md-comp-button-outlined-active-background,
+      color-mix(
+        in srgb,
+        transparent,
+        currentColor
+          calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+      )
+    );
+    border-color: var(
+      --md-comp-button-outlined-active-border-color,
+      var(--md-sys-color-outline)
+    );
+  }
+
+  &:disabled {
+    color: var(
+      --md-comp-button-outlined-disabled-color,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent)
+    );
+    background: var(
+      --md-comp-button-outlined-disabled-background,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent)
+    );
+    box-shadow: var(
+      --md-comp-button-outlined-disabled-shadow,
+      var(--md-sys-elevation-level0)
+    );
+    border-color: var(
+      --md-comp-button-outlined-disabled-border-color,
+      color-mix(in srgb, var(--md-sys-color-outline) 12%, transparent)
+    );
+  }
+
+  &:where(.MuiButton5-error:not(:disabled)) {
+    color: var(--md-comp-button-outlined-color, var(--md-sys-color-error));
+    border-color: var(
+      --md-comp-button-outlined-border-color,
+      var(--md-sys-color-error)
+    );
+
+    &:hover {
+      background: var(
+        --md-comp-button-outlined-hover-background,
+        color-mix(
+          in srgb,
+          transparent,
+          var(--md-sys-color-error)
+            calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+        )
+      );
+      border-color: var(
+        --md-comp-button-outlined-hover-border-color,
+        var(--md-sys-color-error)
+      );
+    }
+
+    &:focus {
+      background: var(
+        --md-comp-button-outlined-focus-background,
+        color-mix(
+          in srgb,
+          transparent,
+          var(--md-sys-color-error)
+            calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+        )
+      );
+      border-color: var(
+        --md-comp-button-outlined-focus-border-color,
+        var(--md-sys-color-error)
+      );
+    }
+
+    &:active {
+      background: var(
+        --md-comp-button-outlined-active-background,
+        color-mix(
+          in srgb,
+          transparent,
+          var(--md-sys-color-error)
+            calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+        )
+      );
+      border-color: var(
+        --md-comp-button-outlined-active-border-color,
+        var(--md-sys-color-error)
+      );
+    }
+  }
+}
+
+.MuiButton5-text {
+  background: var(--md-comp-button-text-background, transparent);
+  color: var(--md-comp-button-text-color, var(--md-sys-color-primary));
+
+  &:hover {
+    background: var(
+      --md-comp-button-text-hover-background,
+      color-mix(
+        in srgb,
+        transparent,
+        currentColor calc(var(--md-sys-state-hover-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:focus {
+    background: var(
+      --md-comp-button-text-focus-background,
+      color-mix(
+        in srgb,
+        transparent,
+        currentColor calc(var(--md-sys-state-focus-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:active {
+    background: var(
+      --md-comp-button-text-active-background,
+      color-mix(
+        in srgb,
+        transparent,
+        currentColor
+          calc(var(--md-sys-state-pressed-state-layer-opacity) * 100%)
+      )
+    );
+  }
+
+  &:disabled {
+    color: var(
+      --md-comp-button-text-disabled-color,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent)
+    );
+    background: var(
+      --md-comp-button-text-disabled-background,
+      color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent)
+    );
+    box-shadow: var(
+      --md-comp-button-text-disabled-shadow,
+      var(--md-sys-elevation-level0)
+    );
+  }
+
+  &:where(.MuiButton5-error:not(:disabled)) {
+    color: var(--md-comp-button-text-color, var(--md-sys-color-error));
+  }
+}

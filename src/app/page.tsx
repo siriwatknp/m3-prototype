@@ -40,6 +40,10 @@ const components: ComponentItem[] = [
         version: "dynamic colors + inline style + public vars",
         route: "/material-ui/react-button4",
       },
+      {
+        version: "classes + public vars",
+        route: "/material-ui/react-button5",
+      },
     ],
   },
 ];
