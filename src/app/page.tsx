@@ -70,7 +70,7 @@ export default function ComponentList() {
                 {component.name === "Button" ? (
                   <Button>Button</Button>
                 ) : (
-                  <Slider defaultValue={50} />
+                  <Slider />
                 )}
               </div>
             </CardContent>

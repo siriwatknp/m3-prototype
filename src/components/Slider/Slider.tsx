@@ -1,7 +1,14 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 
-const Slider = () => {
+const Slider = ({
+  stopIndicators,
+  variant = "continuous",
+  ...props
+}: React.JSX.IntrinsicElements["span"] & {
+  stopIndicators?: boolean | number;
+  variant?: "continuous" | "discrete";
+}) => {
   const [isPressed, setIsPressed] = useState(false);
   const [value, setValue] = useState(50); // Initial value set to 50
   const sliderRef = useRef<HTMLSpanElement>(null);
@@ -36,7 +43,9 @@ const Slider = () => {
 
   return (
     <span
-      className={`MuiSlider-root ${isPressed ? "Mui-pressed" : ""}`}
+      className={`MuiSlider-root ${
+        isPressed ? "Mui-pressed" : ""
+      } MuiSlider-${variant}`}
       ref={sliderRef}
       style={{ "--handle-position": `${value}%` } as React.CSSProperties}
       onMouseMove={handleMouseMove}
@@ -47,10 +56,33 @@ const Slider = () => {
       aria-valuenow={value}
       aria-valuemin={0}
       aria-valuemax={100}
+      {...props}
     >
-      <span className="MuiSlider-track MuiSlider-activeTrack"></span>
-      <span className="MuiSlider-handle"></span>
-      <span className="MuiSlider-track MuiSlider-inactiveTrack"></span>
+      <span className="MuiSlider-track MuiSlider-activeTrack">
+        {stopIndicators &&
+          [
+            ...Array(typeof stopIndicators === "number" ? stopIndicators : 11),
+          ].map((_, index) => (
+            <span
+              key={index}
+              className="MuiSlider-stopIndicator"
+              style={{ "--index": index } as React.CSSProperties}
+            />
+          ))}
+      </span>
+      <span className="MuiSlider-handle" role="slider" tabIndex={0}></span>
+      <span className="MuiSlider-track MuiSlider-inactiveTrack">
+        {stopIndicators &&
+          [
+            ...Array(typeof stopIndicators === "number" ? stopIndicators : 11),
+          ].map((_, index) => (
+            <span
+              key={index}
+              className="MuiSlider-stopIndicator"
+              style={{ "--index": index } as React.CSSProperties}
+            />
+          ))}
+      </span>
     </span>
   );
 };
