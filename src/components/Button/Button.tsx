@@ -5,6 +5,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   onClick?: () => void;
   variant?: "elevated" | "filled" | "filledTonal" | "outlined" | "text";
+  color?: "secondary" | "tertiary" | "error";
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
 }
@@ -12,7 +13,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = ({
   children,
   className = "",
-  variant,
+  color,
+  variant = "outlined",
   onClick,
   startIcon,
   endIcon,
@@ -20,8 +22,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`MuiButton-root ${
-        variant ? `MuiButton-${variant}` : ""
+      className={`MuiButton-root ${variant ? `MuiButton-${variant}` : ""} ${
+        color ? `MuiButton-${color}` : ""
       } ${className}`}
       onClick={onClick}
       {...other}

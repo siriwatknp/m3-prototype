@@ -6,8 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shadcn/ui/card";
-import Button from "@/components/Button3/Button3";
-import Slider from "@/components/Slider/Slider"; // Add this import
+import Button from "@/components/Button/Button";
 import { ExternalLink } from "lucide-react";
 
 // Define the structure for our component data
@@ -28,29 +27,11 @@ const components: ComponentItem[] = [
     name: "Button",
     description: "A clickable button element",
     versions: [
-      { version: "hard-coded color", route: "/material-ui/react-button" },
-      {
-        version: "dynamic colors + class",
-        route: "/material-ui/react-button2",
-      },
-      {
-        version: "dynamic colors + inline style",
-        route: "/material-ui/react-button3",
-      },
-      {
-        version: "dynamic colors + inline style + public vars",
-        route: "/material-ui/react-button4",
-      },
       {
         version: "classes + public vars",
-        route: "/material-ui/react-button5",
+        route: "/material-ui/react-button",
       },
     ],
-  },
-  {
-    name: "Slider",
-    description: "An input slider for selecting a value from a range",
-    versions: [{ version: "Basic slider", route: "/material-ui/react-slider" }],
   },
 ];
 
@@ -66,12 +47,9 @@ export default function ComponentList() {
               <CardDescription>{component.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="p-4 text-center bg-slate-100 rounded-md -my-2">
-                {component.name === "Button" ? (
-                  <Button>Button</Button>
-                ) : (
-                  <Slider defaultValue={50} />
-                )}
+              <div className="p-4 text-center bg-slate-100 rounded-md -my-2 gap-2 flex justify-center">
+                <Button variant="filled">Filled</Button>
+                <Button variant="outlined">Outlined</Button>
               </div>
             </CardContent>
             <CardContent>
