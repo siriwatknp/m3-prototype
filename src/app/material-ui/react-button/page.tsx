@@ -303,7 +303,7 @@ function useButtonOverrides() {
 export default function Page() {
   useButtonOverrides();
   return (
-    <div className="prose max-w-[700px] mx-auto py-5 px-2">
+    <div className="prose dark:prose-invert max-w-[700px] mx-auto py-5 px-2">
       <Leva oneLineLabels />
       <h1>Button Example</h1>
 

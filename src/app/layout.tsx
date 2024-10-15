@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "../components/Button/Button.css";
 import "./globals.css";
 import "./m3-theme.css";
+import { ThemeProvider } from "@/shadcn/ui/theme-provider";
+import { ModeToggle } from "@/shadcn/ui/mode-toggle";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +32,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ModeToggle />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
