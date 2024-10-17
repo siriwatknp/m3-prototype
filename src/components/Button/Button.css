@@ -582,10 +582,8 @@
   gap: var(--md-comp-button-small-gap, var(--md-ref-spacing-2));
   font-size: var(
     --md-comp-button-small-font-size,
-    var(--md-sys-typescale-label-medium-size)
+    var(--md-ref-typeface-size-3)
   );
-  line-height: var(--md-sys-typescale-label-medium-line-height);
-  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
 }
 
 .MuiButton-large {
