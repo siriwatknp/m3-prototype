@@ -9,7 +9,20 @@ function useButtonOverrides() {
     "--md-comp-button-height": "var(--md-ref-spacing-10)",
     "--md-comp-button-padding-inline": "var(--md-ref-spacing-6)",
     "--md-comp-button-gap": "var(--md-ref-spacing-2)",
+    "--md-comp-button-font-size": "var(--md-sys-typescale-label-large-size)",
     "--md-comp-button-corner": "var(--md-sys-shape-corner-full)",
+    // Small Button
+    "--md-comp-button-small-height": "var(--md-ref-spacing-7)",
+    "--md-comp-button-small-padding-inline": "var(--md-ref-spacing-5)",
+    "--md-comp-button-small-gap": "var(--md-ref-spacing-2)",
+    "--md-comp-button-small-font-size":
+      "var(--md-sys-typescale-label-medium-size)",
+    // Large Button
+    "--md-comp-button-large-height": "var(--md-ref-spacing-9)",
+    "--md-comp-button-large-padding-inline": "var(--md-ref-spacing-7)",
+    "--md-comp-button-large-gap": "var(--md-ref-spacing-2)",
+    "--md-comp-button-large-font-size": "var(--md-ref-typeface-size-4)",
+
     // Elevated Button
     "--md-comp-button-elevated-shadow":
       "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
@@ -97,7 +110,7 @@ function useButtonOverrides() {
     "--md-comp-button-corner": {
       value: defaultValues["--md-comp-button-corner"],
     },
-    Elevated: folder({
+    "variant: elevated": folder({
       "--md-comp-button-elevated-shadow": {
         value: defaultValues["--md-comp-button-elevated-shadow"],
       },
@@ -135,7 +148,7 @@ function useButtonOverrides() {
         value: defaultValues["--md-comp-button-elevated-disabled-shadow"],
       },
     }),
-    Filled: folder({
+    "variant: filled": folder({
       "--md-comp-button-filled-shadow": {
         value: defaultValues["--md-comp-button-filled-shadow"],
       },
@@ -173,7 +186,7 @@ function useButtonOverrides() {
         value: defaultValues["--md-comp-button-filled-disabled-shadow"],
       },
     }),
-    "Filled Tonal": folder({
+    "variant: filledTonal": folder({
       "--md-comp-button-filled-tonal-shadow": {
         value: defaultValues["--md-comp-button-filled-tonal-shadow"],
       },
@@ -212,7 +225,7 @@ function useButtonOverrides() {
         value: defaultValues["--md-comp-button-filledTonal-disabled-shadow"],
       },
     }),
-    Text: folder({
+    "variant: text": folder({
       "--md-comp-button-text-background": {
         value: defaultValues["--md-comp-button-text-background"],
       },
@@ -238,7 +251,7 @@ function useButtonOverrides() {
         value: defaultValues["--md-comp-button-text-disabled-shadow"],
       },
     }),
-    Outlined: folder({
+    "variant: outlined": folder({
       "--md-comp-button-outlined-border-color": {
         value: defaultValues["--md-comp-button-outlined-border-color"],
       },
@@ -274,6 +287,34 @@ function useButtonOverrides() {
       },
       "--md-comp-button-outlined-disabled-border-color": {
         value: defaultValues["--md-comp-button-outlined-disabled-border-color"],
+      },
+    }),
+    "size: small": folder({
+      "--md-comp-button-small-height": {
+        value: defaultValues["--md-comp-button-small-height"],
+      },
+      "--md-comp-button-small-padding-inline": {
+        value: defaultValues["--md-comp-button-small-padding-inline"],
+      },
+      "--md-comp-button-small-gap": {
+        value: defaultValues["--md-comp-button-small-gap"],
+      },
+      "--md-comp-button-small-font-size": {
+        value: defaultValues["--md-comp-button-small-font-size"],
+      },
+    }),
+    "size: large": folder({
+      "--md-comp-button-large-height": {
+        value: defaultValues["--md-comp-button-large-height"],
+      },
+      "--md-comp-button-large-padding-inline": {
+        value: defaultValues["--md-comp-button-large-padding-inline"],
+      },
+      "--md-comp-button-large-gap": {
+        value: defaultValues["--md-comp-button-large-gap"],
+      },
+      "--md-comp-button-large-font-size": {
+        value: defaultValues["--md-comp-button-large-font-size"],
       },
     }),
   });
@@ -315,13 +356,75 @@ export default function Page() {
       </p>
       <div
         data-button-override
-        className="flex rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4"
+        className="grid grid-cols-[repeat(5,max-content)] border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4"
       >
-        <Button variant="elevated">Elevated</Button>
-        <Button variant="filled">Filled</Button>
-        <Button variant="filledTonal">Filled Tonal</Button>
-        <Button variant="outlined">Outlined</Button>
-        <Button variant="text">Text</Button>
+        <div>
+          <Button size="small" variant="elevated">
+            Elevated
+          </Button>
+        </div>
+        <div>
+          <Button size="small" variant="filled">
+            Filled
+          </Button>
+        </div>
+        <div>
+          <Button size="small" variant="filledTonal">
+            Filled Tonal
+          </Button>
+        </div>
+        <div>
+          <Button size="small" variant="outlined">
+            Outlined
+          </Button>
+        </div>
+        <div>
+          <Button size="small" variant="text">
+            Text
+          </Button>
+        </div>
+
+        <div>
+          <Button variant="elevated">Elevated</Button>
+        </div>
+        <div>
+          <Button variant="filled">Filled</Button>
+        </div>
+        <div>
+          <Button variant="filledTonal">Filled Tonal</Button>
+        </div>
+        <div>
+          <Button variant="outlined">Outlined</Button>
+        </div>
+        <div>
+          <Button variant="text">Text</Button>
+        </div>
+
+        <div>
+          <Button size="large" variant="elevated">
+            Elevated
+          </Button>
+        </div>
+        <div>
+          <Button size="large" variant="filled">
+            Filled
+          </Button>
+        </div>
+        <div>
+          <Button size="large" variant="filledTonal">
+            Filled Tonal
+          </Button>
+        </div>
+        <div>
+          <Button size="large" variant="outlined">
+            Outlined
+          </Button>
+        </div>
+        <div>
+          <Button size="large" variant="text">
+            Text
+          </Button>
+        </div>
       </div>
 
       <h2>Variants</h2>
@@ -372,7 +475,17 @@ export default function Page() {
       </div>
 
       <h2>Sizes</h2>
-      <div className="flex rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4"></div>
+      <div className="flex rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
+        <Button size="small" variant="filled">
+          Small
+        </Button>
+        <Button size="medium" variant="filled">
+          Medium
+        </Button>
+        <Button size="large" variant="filled">
+          Large
+        </Button>
+      </div>
 
       <h2>Start/End Icon</h2>
       <div className="flex rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">

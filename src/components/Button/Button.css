@@ -1,6 +1,6 @@
 /* Slots */
 .MuiButton-root {
-  height: var(--md-comp-button-height, var(--md-ref-spacing-10));
+  height: var(--md-comp-button-height, var(--md-ref-spacing-8));
   padding-inline: var(--md-comp-button-padding-inline, var(--md-ref-spacing-6));
   gap: var(--md-comp-button-gap, var(--md-ref-spacing-2));
   border-radius: var(--md-comp-button-corner, var(--md-sys-shape-corner-full));
@@ -27,7 +27,10 @@
   text-decoration: none;
   /* So we take precedent over the style of a native <a /> element. */
 
-  font-size: var(--md-sys-typescale-label-large-size);
+  font-size: var(
+    --md-comp-button-font-size,
+    var(--md-sys-typescale-label-large-size)
+  );
   font-family: var(--md-sys-typescale-label-large-font);
   font-weight: var(--md-sys-typescale-label-large-weight);
   line-height: var(--md-sys-typescale-label-large-line-height);
@@ -65,9 +68,8 @@
   }
 }
 
-/* ======================================================== */
+/* Variants ===================================================== */
 
-/* variants */
 .MuiButton-elevated {
   box-shadow: var(
     --md-comp-button-elevated-shadow,
@@ -565,4 +567,34 @@
   &:where(.MuiButton-error:not(:disabled)) {
     color: var(--md-comp-button-text-color, var(--md-sys-color-error));
   }
+}
+
+/* Sizes ===================================================== */
+
+.MuiButton-small {
+  height: var(--md-comp-button-small-height, var(--md-ref-spacing-7));
+  padding-inline: var(
+    --md-comp-button-small-padding-inline,
+    var(--md-ref-spacing-5)
+  );
+  gap: var(--md-comp-button-small-gap, var(--md-ref-spacing-2));
+  font-size: var(
+    --md-comp-button-small-font-size,
+    var(--md-sys-typescale-label-medium-size)
+  );
+  line-height: var(--md-sys-typescale-label-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+}
+
+.MuiButton-large {
+  height: var(--md-comp-button-large-height, var(--md-ref-spacing-9));
+  padding-inline: var(
+    --md-comp-button-large-padding-inline,
+    var(--md-ref-spacing-7)
+  );
+  gap: var(--md-comp-button-large-gap, var(--md-ref-spacing-2));
+  font-size: var(
+    --md-comp-button-large-font-size,
+    var(--md-ref-typeface-size-4)
+  );
 }
