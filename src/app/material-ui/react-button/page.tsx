@@ -6,6 +6,8 @@ import { useEffect } from "react";
 
 function useButtonOverrides() {
   const defaultValues = {
+    "--md-comp-button-transition":
+      "var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium1)",
     "--md-comp-button-height": "var(--md-ref-spacing-10)",
     "--md-comp-button-padding-inline": "var(--md-ref-spacing-6)",
     "--md-comp-button-gap": "var(--md-ref-spacing-2)",
@@ -109,6 +111,9 @@ function useButtonOverrides() {
     },
     "--md-comp-button-corner": {
       value: defaultValues["--md-comp-button-corner"],
+    },
+    "--md-comp-button-transition": {
+      value: defaultValues["--md-comp-button-transition"],
     },
     "variant: elevated": folder({
       "--md-comp-button-elevated-shadow": {

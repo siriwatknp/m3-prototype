@@ -213,22 +213,23 @@
   Motion
   https://m3.material.io/styles/motion/easing-and-duration/tokens-specs
   */
-  --md-sys-motion-duration-short1: 50ms;
-  --md-sys-motion-duration-short2: 100ms;
-  --md-sys-motion-duration-short3: 150ms;
-  --md-sys-motion-duration-short4: 200ms;
-  --md-sys-motion-duration-medium1: 250ms;
-  --md-sys-motion-duration-medium2: 300ms;
-  --md-sys-motion-duration-medium3: 350ms;
-  --md-sys-motion-duration-medium4: 400ms;
-  --md-sys-motion-duration-long1: 450ms;
-  --md-sys-motion-duration-long2: 500ms;
-  --md-sys-motion-duration-long3: 550ms;
-  --md-sys-motion-duration-long4: 600ms;
-  --md-sys-motion-duration-extra-long1: 700ms;
-  --md-sys-motion-duration-extra-long2: 800ms;
-  --md-sys-motion-duration-extra-long3: 900ms;
-  --md-sys-motion-duration-extra-long4: 1000ms;
+  --md-ref-motion-duration-short1: 50ms; /* The spec uses `sys` but it makes more sense to be `ref` */
+  --md-ref-motion-duration-short2: 100ms;
+  --md-ref-motion-duration-short3: 150ms;
+  --md-ref-motion-duration-short4: 200ms;
+  --md-ref-motion-duration-medium1: 250ms;
+  --md-ref-motion-duration-medium2: 300ms;
+  --md-ref-motion-duration-medium3: 350ms;
+  --md-ref-motion-duration-medium4: 400ms;
+  --md-ref-motion-duration-long1: 450ms;
+  --md-ref-motion-duration-long2: 500ms;
+  --md-ref-motion-duration-long3: 550ms;
+  --md-ref-motion-duration-long4: 600ms;
+  --md-ref-motion-duration-extra-long1: 700ms;
+  --md-ref-motion-duration-extra-long2: 800ms;
+  --md-ref-motion-duration-extra-long3: 900ms;
+  --md-ref-motion-duration-extra-long4: 1000ms;
+
   --md-sys-motion-easing-linear: linear;
   --md-sys-motion-easing-emphasized: var(--md-sys-motion-easing-standard);
   --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);

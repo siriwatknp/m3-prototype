@@ -15,8 +15,10 @@
   justify-content: center;
   position: relative;
   box-sizing: border-box;
-  transition: var(--md-sys-motion-easing-standard)
-    var(--md-sys-motion-duration-medium1);
+  transition: var(
+    --md-comp-button-transition,
+    var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium1)
+  );
   -webkit-tap-highlight-color: transparent;
   margin: 0; /* Remove the margin in Safari */
   cursor: pointer;
