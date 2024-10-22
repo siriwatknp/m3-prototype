@@ -17,7 +17,7 @@
   box-sizing: border-box;
   transition: var(
     --md-comp-button-transition,
-    var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium1)
+    var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium)
   );
   -webkit-tap-highlight-color: transparent;
   margin: 0; /* Remove the margin in Safari */
@@ -581,10 +581,7 @@
     var(--md-ref-spacing-5)
   );
   gap: var(--md-comp-button-small-gap, var(--md-ref-spacing-2));
-  font-size: var(
-    --md-comp-button-small-font-size,
-    var(--md-ref-typeface-size-3)
-  );
+  font-size: var(--md-comp-button-small-font-size, var(--md-ref-font-size-3));
 }
 
 .MuiButton-large {
@@ -594,8 +591,5 @@
     var(--md-ref-spacing-7)
   );
   gap: var(--md-comp-button-large-gap, var(--md-ref-spacing-2));
-  font-size: var(
-    --md-comp-button-large-font-size,
-    var(--md-ref-typeface-size-4)
-  );
+  font-size: var(--md-comp-button-large-font-size, var(--md-ref-font-size-4));
 }
