@@ -8,6 +8,7 @@ import {
 } from "@/shadcn/ui/card";
 import Button from "@/components/Button/Button";
 import { ExternalLink } from "lucide-react";
+import Slider from "@/components/Slider/Slider";
 
 // Define the structure for our component data
 type ComponentVersion = {
@@ -33,6 +34,16 @@ const components: ComponentItem[] = [
       },
     ],
   },
+  {
+    name: "Slider",
+    description: "An input slider for selecting a value from a range",
+    versions: [
+      {
+        version: "classes + public vars",
+        route: "/material-ui/react-slider",
+      },
+    ],
+  },
 ];
 
 export default function ComponentList() {
@@ -48,8 +59,13 @@ export default function ComponentList() {
             </CardHeader>
             <CardContent>
               <div className="p-4 text-center bg-slate-100 rounded-md -my-2 gap-2 flex justify-center">
-                <Button variant="filled">Filled</Button>
-                <Button variant="outlined">Outlined</Button>
+                {component.name === "Button" && (
+                  <>
+                    <Button variant="filled">Filled</Button>
+                    <Button variant="outlined">Outlined</Button>
+                  </>
+                )}
+                {component.name === "Slider" && <Slider defaultValue={50} />}
               </div>
             </CardContent>
             <CardContent>

@@ -10,12 +10,20 @@ const Slider = ({
   variant?: "continuous" | "discrete";
 }) => {
   const [isPressed, setIsPressed] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [value, setValue] = useState(50); // Initial value set to 50
   const sliderRef = useRef<HTMLSpanElement>(null);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsPressed(true);
-    handleMouseMove(e);
+    if (sliderRef.current) {
+      const rect = sliderRef.current.getBoundingClientRect();
+      const newValue = Math.min(
+        Math.max(((e.clientX - rect.left) / rect.width) * 100, 0),
+        100
+      );
+      setValue(newValue);
+    }
   };
 
   const handleMouseUp = () => {
@@ -24,6 +32,7 @@ const Slider = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isPressed && sliderRef.current) {
+      setIsDragging(true);
       const rect = sliderRef.current.getBoundingClientRect();
       const newValue = Math.min(
         Math.max(((e.clientX - rect.left) / rect.width) * 100, 0),
@@ -36,6 +45,7 @@ const Slider = ({
   useEffect(() => {
     const handleMouseUpGlobal = () => {
       setIsPressed(false);
+      setIsDragging(false);
     };
     document.addEventListener("mouseup", handleMouseUpGlobal);
     return () => document.removeEventListener("mouseup", handleMouseUpGlobal);
@@ -43,9 +53,9 @@ const Slider = ({
 
   return (
     <span
-      className={`MuiSlider-root ${
+      className={`MuiSlider-root MuiSlider-${variant} ${
         isPressed ? "Mui-pressed" : ""
-      } MuiSlider-${variant}`}
+      } ${isDragging ? "Mui-dragging" : ""}`}
       ref={sliderRef}
       style={{ "--handle-position": `${value}%` } as React.CSSProperties}
       onMouseMove={handleMouseMove}
@@ -70,7 +80,7 @@ const Slider = ({
             />
           ))}
       </span>
-      <span className="MuiSlider-handle" role="slider" tabIndex={0}></span>
+      <button className="MuiSlider-handle" role="slider" tabIndex={0}></button>
       <span className="MuiSlider-track MuiSlider-inactiveTrack">
         {stopIndicators &&
           [

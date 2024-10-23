@@ -2,6 +2,7 @@
   --handle-position: 50%;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .MuiSlider-track {
@@ -35,7 +36,7 @@
     flex: 1;
   }
 }
-:where(.Mui-pressed) .MuiSlider-activeTrack {
+:where(.MuiSlider-root:has(.MuiSlider-handle:active)) .MuiSlider-activeTrack {
   width: calc(
     var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
       calc(var(--md-comp-slider-handle-width, 4px) / 2) +
@@ -58,13 +59,20 @@
   height: 44px;
   color: var(--md-sys-color-primary);
   cursor: pointer;
-  position: relative;
+  /* position: relative; */
   transition: padding 0.2s;
   border-radius: 2px;
+  z-index: 1; /* to make the focus ring stay above tracks */
 
   &:focus-visible {
     outline: 2px solid var(--md-sys-color-primary);
     outline-offset: 2px;
+  }
+
+  &:active {
+    &::before {
+      width: var(--md-comp-slider-handle-pressed-width, 2px);
+    }
   }
 
   &::before {
@@ -78,10 +86,12 @@
     transition: 0.2s;
     margin-inline: auto;
   }
-}
-:where(.Mui-pressed) .MuiSlider-handle {
-  &::before {
-    width: var(--md-comp-slider-handle-pressed-width, 2px);
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    inset: 0;
   }
 }
 
