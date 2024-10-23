@@ -1,0 +1,109 @@
+.MuiSlider-root {
+  --handle-position: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.MuiSlider-track {
+  position: relative;
+  height: 16px;
+  border-radius: 2px;
+  overflow: hidden; /* for hiding the dot indicators */
+  transition: 0.2s;
+
+  &:where(:first-child) {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &:where(:last-child) {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  &:where(.MuiSlider-activeTrack) {
+    color: var(--md-sys-color-on-primary);
+    background: var(--md-sys-color-primary);
+    width: calc(
+      var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
+        calc(var(--md-comp-slider-handle-width, 4px) / 2)
+    ); /* account for handle space and width */
+  }
+  &:where(.MuiSlider-inactiveTrack) {
+    color: var(--md-sys-color-on-secondary-container);
+    background: var(--md-sys-color-secondary-container);
+    flex: 1;
+  }
+}
+:where(.Mui-pressed) .MuiSlider-activeTrack {
+  width: calc(
+    var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
+      calc(var(--md-comp-slider-handle-width, 4px) / 2) +
+      calc(var(--md-comp-slider-handle-pressed-width, 2px) / 2)
+  ); /* account for handle space and width */
+}
+:where(.Mui-dragging) .MuiSlider-activeTrack {
+  transition: none;
+}
+
+.MuiSlider-handle {
+  padding-left: min(
+    var(--md-comp-slider-handle-space, 6px),
+    var(--handle-position)
+  );
+  padding-right: min(
+    var(--md-comp-slider-handle-space, 6px),
+    100% - var(--handle-position)
+  );
+  height: 44px;
+  color: var(--md-sys-color-primary);
+  cursor: pointer;
+  position: relative;
+  transition: padding 0.2s;
+  border-radius: 2px;
+
+  &:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: var(--md-comp-slider-handle-width, 4px);
+    background: currentColor;
+    color: inherit;
+    border-radius: 2px;
+    transition: 0.2s;
+    margin-inline: auto;
+  }
+}
+:where(.Mui-pressed) .MuiSlider-handle {
+  &::before {
+    width: var(--md-comp-slider-handle-pressed-width, 2px);
+  }
+}
+
+.MuiSlider-stopIndicator {
+  background: currentColor;
+  color: inherit;
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+:where(.MuiSlider-discrete) .MuiSlider-stopIndicator {
+  position: absolute;
+  top: calc(50% - 4px / 2);
+  &:first-of-type {
+    left: 6px;
+  }
+  &:not(:first-of-type):not(:last-of-type) {
+    margin-left: calc(var(--index) * 10% - 12px);
+  }
+  &:last-of-type {
+    right: 6px;
+  }
+}
