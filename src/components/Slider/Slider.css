@@ -6,23 +6,14 @@
 }
 
 .MuiSlider-track {
-  clip-path: padding-box; /* to clip stop indicators */
   height: 16px;
   border-radius: 2px;
   overflow: hidden; /* for hiding the dot indicators */
   transition: 0.2s;
-
-  &:where(:first-child) {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-
-  &:where(:last-child) {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
 }
 .MuiSlider-activeTrack {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   color: var(--md-sys-color-on-primary);
   background: var(--md-sys-color-primary);
   width: calc(
@@ -31,6 +22,9 @@
   ); /* account for handle space and width */
 }
 .MuiSlider-inactiveTrack {
+  direction: rtl;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   color: var(--md-sys-color-on-secondary-container);
   background: var(--md-sys-color-secondary-container);
   flex: 1;
@@ -58,8 +52,6 @@
   height: 44px;
   color: var(--md-sys-color-primary);
   cursor: pointer;
-  /* position: relative; */
-  transition: padding 0.2s;
   border-radius: 2px;
   z-index: 1; /* to make the focus ring stay above tracks */
 
@@ -108,22 +100,22 @@
   top: calc(50% - 4px / 2);
 }
 :where(.MuiSlider-discrete .MuiSlider-activeTrack) .MuiSlider-stopIndicator {
+  opacity: calc((var(--handle-position) - var(--index) * 10%) * 999);
   &:first-of-type {
     left: 6px;
+    opacity: calc((var(--handle-position) - 3%) * 999);
   }
-  &:last-of-type {
-    right: 6px;
-  }
-  &:not(:first-of-type):not(:last-of-type) {
-    margin-inline-start: calc(var(--index) * 10% - 12px);
+  &:not(:first-of-type) {
+    margin-inline-start: calc(var(--index) * 10% - (var(--index) * 4px / 10));
   }
 }
 :where(.MuiSlider-discrete .MuiSlider-inactiveTrack) .MuiSlider-stopIndicator {
-  right: 6px;
-  &:last-of-type {
-    left: 6px;
+  opacity: calc((100% - var(--handle-position) - var(--index) * 10%) * 999);
+  &:first-of-type {
+    right: 6px;
+    opacity: calc((97% - var(--handle-position)) * 999);
   }
-  &:not(:first-of-type):not(:last-of-type) {
-    margin-inline-end: calc(var(--index) * 10% - 12px);
+  &:not(:first-of-type) {
+    margin-inline-start: calc(var(--index) * 10% - (var(--index) * 4px / 10));
   }
 }
