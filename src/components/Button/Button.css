@@ -1,9 +1,5 @@
 /* Slots */
 .MuiButton-root {
-  height: var(--md-comp-button-height, var(--md-ref-spacing-8));
-  padding-inline: var(--md-comp-button-padding-inline, var(--md-ref-spacing-6));
-  gap: var(--md-comp-button-gap, var(--md-ref-spacing-2));
-  border-radius: var(--md-comp-button-corner, var(--md-sys-shape-corner-full));
   box-shadow: none;
   background: transparent;
   color: inherit;
@@ -15,10 +11,6 @@
   justify-content: center;
   position: relative;
   box-sizing: border-box;
-  transition: var(
-    --md-comp-button-transition,
-    var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium)
-  );
   -webkit-tap-highlight-color: transparent;
   margin: 0; /* Remove the margin in Safari */
   cursor: pointer;
@@ -29,9 +21,10 @@
   text-decoration: none;
   /* So we take precedent over the style of a native <a /> element. */
 
-  font-size: var(
-    --md-comp-button-font-size,
-    var(--md-sys-typescale-label-large-size)
+  border-radius: var(--md-comp-button-corner, var(--md-sys-shape-corner-full));
+  transition: var(
+    --md-comp-button-transition,
+    var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium)
   );
   font-family: var(--md-sys-typescale-label-large-font);
   font-weight: var(--md-sys-typescale-label-large-weight);
@@ -574,6 +567,18 @@
 
 /* Sizes ===================================================== */
 
+.MuiButton-medium {
+  height: var(--md-comp-button-medium-height, var(--md-ref-spacing-8));
+  padding-inline: var(
+    --md-comp-button-medium-padding-inline,
+    var(--md-ref-spacing-6)
+  );
+  gap: var(--md-comp-button-medium-gap, var(--md-ref-spacing-2));
+  font-size: var(
+    --md-comp-button-medium-font-size,
+    var(--md-sys-typescale-label-large-size)
+  );
+}
 .MuiButton-small {
   height: var(--md-comp-button-small-height, var(--md-ref-spacing-7));
   padding-inline: var(

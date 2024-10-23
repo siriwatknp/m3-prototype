@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`MuiButton-root ${variant ? `MuiButton-${variant}` : ""} ${
         color ? `MuiButton-${color}` : ""
-      } ${size && size !== "medium" ? `MuiButton-${size}` : ""} ${className}`}
+      } ${size ? `MuiButton-${size}` : ""} ${className}`}
       onClick={onClick}
       {...other}
     >

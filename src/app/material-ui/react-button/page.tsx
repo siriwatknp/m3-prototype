@@ -8,11 +8,14 @@ function useButtonOverrides() {
   const defaultValues = {
     "--md-comp-button-transition":
       "var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium1)",
-    "--md-comp-button-height": "var(--md-ref-spacing-10)",
-    "--md-comp-button-padding-inline": "var(--md-ref-spacing-6)",
-    "--md-comp-button-gap": "var(--md-ref-spacing-2)",
-    "--md-comp-button-font-size": "var(--md-sys-typescale-label-large-size)",
     "--md-comp-button-corner": "var(--md-sys-shape-corner-full)",
+
+    // Medium Button
+    "--md-comp-button-medium-height": "var(--md-ref-spacing-10)",
+    "--md-comp-button-medium-padding-inline": "var(--md-ref-spacing-6)",
+    "--md-comp-button-medium-gap": "var(--md-ref-spacing-2)",
+    "--md-comp-button-medium-font-size":
+      "var(--md-sys-typescale-label-large-size)",
     // Small Button
     "--md-comp-button-small-height": "var(--md-ref-spacing-7)",
     "--md-comp-button-small-padding-inline": "var(--md-ref-spacing-5)",
@@ -100,21 +103,54 @@ function useButtonOverrides() {
   };
 
   const values = useControls({
-    "--md-comp-button-height": {
-      value: defaultValues["--md-comp-button-height"],
-    },
-    "--md-comp-button-padding-inline": {
-      value: defaultValues["--md-comp-button-padding-inline"],
-    },
-    "--md-comp-button-gap": {
-      value: defaultValues["--md-comp-button-gap"],
-    },
     "--md-comp-button-corner": {
       value: defaultValues["--md-comp-button-corner"],
     },
     "--md-comp-button-transition": {
       value: defaultValues["--md-comp-button-transition"],
     },
+    "size: small": folder({
+      "--md-comp-button-small-height": {
+        value: defaultValues["--md-comp-button-small-height"],
+      },
+      "--md-comp-button-small-padding-inline": {
+        value: defaultValues["--md-comp-button-small-padding-inline"],
+      },
+      "--md-comp-button-small-gap": {
+        value: defaultValues["--md-comp-button-small-gap"],
+      },
+      "--md-comp-button-small-font-size": {
+        value: defaultValues["--md-comp-button-small-font-size"],
+      },
+    }),
+    "size: medium": folder({
+      "--md-comp-button-medium-height": {
+        value: defaultValues["--md-comp-button-medium-height"],
+      },
+      "--md-comp-button-medium-padding-inline": {
+        value: defaultValues["--md-comp-button-medium-padding-inline"],
+      },
+      "--md-comp-button-medium-gap": {
+        value: defaultValues["--md-comp-button-medium-gap"],
+      },
+      "--md-comp-button-medium-font-size": {
+        value: defaultValues["--md-comp-button-medium-font-size"],
+      },
+    }),
+    "size: large": folder({
+      "--md-comp-button-large-height": {
+        value: defaultValues["--md-comp-button-large-height"],
+      },
+      "--md-comp-button-large-padding-inline": {
+        value: defaultValues["--md-comp-button-large-padding-inline"],
+      },
+      "--md-comp-button-large-gap": {
+        value: defaultValues["--md-comp-button-large-gap"],
+      },
+      "--md-comp-button-large-font-size": {
+        value: defaultValues["--md-comp-button-large-font-size"],
+      },
+    }),
     "variant: elevated": folder({
       "--md-comp-button-elevated-shadow": {
         value: defaultValues["--md-comp-button-elevated-shadow"],
@@ -292,34 +328,6 @@ function useButtonOverrides() {
       },
       "--md-comp-button-outlined-disabled-border-color": {
         value: defaultValues["--md-comp-button-outlined-disabled-border-color"],
-      },
-    }),
-    "size: small": folder({
-      "--md-comp-button-small-height": {
-        value: defaultValues["--md-comp-button-small-height"],
-      },
-      "--md-comp-button-small-padding-inline": {
-        value: defaultValues["--md-comp-button-small-padding-inline"],
-      },
-      "--md-comp-button-small-gap": {
-        value: defaultValues["--md-comp-button-small-gap"],
-      },
-      "--md-comp-button-small-font-size": {
-        value: defaultValues["--md-comp-button-small-font-size"],
-      },
-    }),
-    "size: large": folder({
-      "--md-comp-button-large-height": {
-        value: defaultValues["--md-comp-button-large-height"],
-      },
-      "--md-comp-button-large-padding-inline": {
-        value: defaultValues["--md-comp-button-large-padding-inline"],
-      },
-      "--md-comp-button-large-gap": {
-        value: defaultValues["--md-comp-button-large-gap"],
-      },
-      "--md-comp-button-large-font-size": {
-        value: defaultValues["--md-comp-button-large-font-size"],
       },
     }),
   });
