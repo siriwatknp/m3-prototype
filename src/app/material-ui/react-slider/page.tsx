@@ -50,9 +50,9 @@ export default function Page() {
         <Slider defaultValue={50} />
       </div>
 
-      <h2>Variants</h2>
+      <h2>Indicators</h2>
       <div className="flex flex-col rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
-        <Slider defaultValue={50} />
+        <Slider defaultValue={50} variant="discrete" stopIndicators />
       </div>
     </div>
   );
