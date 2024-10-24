@@ -119,3 +119,134 @@
     margin-inline-start: calc(var(--index) * 10% - (var(--index) * 4px / 10));
   }
 }
+
+.MuiSlider2-track {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.MuiSlider2-activeTrack {
+  position: initial !important;
+  height: 16px !important;
+  border-radius: 2px;
+  overflow: hidden; /* for hiding the dot indicators */
+  transition: 0.2s;
+
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-primary);
+  width: calc(
+    var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
+      calc(var(--md-comp-slider-handle-width, 4px) / 2)
+  ) !important; /* account for handle space and width */
+
+  &:has(~ [data-dragging="true"]) {
+    width: calc(
+      var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
+        calc(var(--md-comp-slider-handle-width, 4px) / 2) +
+        calc(var(--md-comp-slider-handle-pressed-width, 2px) / 2)
+    ) !important; /* account for handle space and width */
+  }
+}
+.MuiSlider2-inactiveTrack {
+  height: 16px;
+  border-radius: 2px;
+  overflow: hidden; /* for hiding the dot indicators */
+  transition: 0.2s;
+
+  direction: rtl;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: var(--md-sys-color-on-secondary-container);
+  background: var(--md-sys-color-secondary-container);
+  flex: 1;
+}
+.MuiSlider2-handle {
+  position: relative !important;
+  transform: none !important;
+  left: unset !important;
+  top: unset !important;
+  padding-left: min(
+    var(--md-comp-slider-handle-space, 6px),
+    var(--handle-position)
+  );
+  padding-right: min(
+    var(--md-comp-slider-handle-space, 6px),
+    100% - var(--handle-position)
+  );
+  height: 44px;
+  color: var(--md-sys-color-primary);
+  cursor: pointer;
+  border-radius: 2px;
+  z-index: 1; /* to make the focus ring stay above tracks */
+
+  &:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+  }
+
+  &[data-dragging="true"] {
+    &::before {
+      width: var(--md-comp-slider-handle-pressed-width, 2px);
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: var(--md-comp-slider-handle-width, 4px);
+    background: currentColor;
+    color: inherit;
+    border-radius: 2px;
+    transition: 0.2s;
+    margin-inline: auto;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    inset: 0;
+  }
+}
+:where(.MuiSlider2-root:has(output[data-dragging="true"]))
+  .MuiSlider2-activeTrack {
+  transition: none;
+}
+.MuiSlider2-stopIndicator {
+  background: currentColor;
+  color: inherit;
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: var(--md-sys-shape-corner-full);
+}
+:where(.MuiSlider2-discrete) .MuiSlider2-stopIndicator {
+  position: absolute;
+  top: calc(50% - 4px / 2);
+}
+:where(.MuiSlider2-discrete .MuiSlider2-activeTrack) .MuiSlider2-stopIndicator {
+  opacity: calc((var(--handle-position) - var(--index) * 10% + 1%) * 999);
+  &:first-of-type {
+    left: 6px;
+    opacity: calc((var(--handle-position) - 3%) * 999);
+  }
+  &:not(:first-of-type) {
+    margin-inline-start: calc(var(--index) * 10% - (var(--index) * 4px / 10));
+  }
+}
+:where(.MuiSlider2-discrete .MuiSlider2-inactiveTrack)
+  .MuiSlider2-stopIndicator {
+  opacity: calc(
+    (100% - var(--handle-position) - var(--index) * 10% - 1%) * 999
+  );
+  &:first-of-type {
+    right: 6px;
+    opacity: calc((97% - var(--handle-position)) * 999);
+  }
+  &:not(:first-of-type) {
+    margin-inline-start: calc(var(--index) * 10% - (var(--index) * 4px / 10));
+  }
+}

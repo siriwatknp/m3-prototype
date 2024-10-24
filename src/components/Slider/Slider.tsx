@@ -1,5 +1,59 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import * as BaseSlider from "@base_ui/react/Slider";
+
+export function Slider2({
+  variant = "continuous",
+  stopIndicators,
+}: {
+  variant?: "continuous" | "discrete";
+  stopIndicators?: boolean | number;
+}) {
+  const [value, setValue] = React.useState(50);
+  return (
+    <BaseSlider.Root
+      className={`MuiSlider2-root MuiSlider2-${variant}`}
+      value={value}
+      onValueChange={(value) => setValue(value as number)}
+      style={{ "--handle-position": `${value}%` } as React.CSSProperties}
+    >
+      <BaseSlider.Output />
+      <BaseSlider.Control>
+        <BaseSlider.Track className="MuiSlider2-track">
+          <BaseSlider.Indicator className="MuiSlider2-activeTrack">
+            {stopIndicators &&
+              [
+                ...Array(
+                  typeof stopIndicators === "number" ? stopIndicators : 11
+                ),
+              ].map((_, index) => (
+                <span
+                  key={index}
+                  className="MuiSlider2-stopIndicator"
+                  style={{ "--index": index } as React.CSSProperties}
+                />
+              ))}
+          </BaseSlider.Indicator>
+          <BaseSlider.Thumb className="MuiSlider2-handle" />
+          <span className="MuiSlider2-inactiveTrack">
+            {stopIndicators &&
+              [
+                ...Array(
+                  typeof stopIndicators === "number" ? stopIndicators : 11
+                ),
+              ].map((_, index) => (
+                <span
+                  key={index}
+                  className="MuiSlider2-stopIndicator"
+                  style={{ "--index": index } as React.CSSProperties}
+                />
+              ))}
+          </span>
+        </BaseSlider.Track>
+      </BaseSlider.Control>
+    </BaseSlider.Root>
+  );
+}
 
 const Slider = ({
   stopIndicators,
