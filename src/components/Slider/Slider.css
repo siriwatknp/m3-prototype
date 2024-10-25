@@ -1,25 +1,63 @@
-.MuiSlider-track {
+.MuiSlider-rail {
   display: flex;
   align-items: center;
   position: relative;
 }
-.MuiSlider-activeTrack {
+.MuiSlider-track {
   position: initial !important;
   height: 16px !important;
   border-radius: 2px;
   overflow: hidden; /* for hiding the dot indicators */
   transition: 0.2s;
+  color: var(--md-sys-color-on-secondary-container);
+  background: var(--md-sys-color-secondary-container);
 
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  color: var(--md-sys-color-on-primary);
-  background: var(--md-sys-color-primary);
-  width: calc(
-    var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
-      calc(var(--md-comp-slider-handle-width, 4px) / 2)
-  ) !important; /* account for handle space and width */
+  &:where(.MuiSlider-activeTrack) {
+    color: var(--md-sys-color-on-primary);
+    background: var(--md-sys-color-primary);
+  }
 
-  &:has(~ [data-dragging="true"]) {
+  &:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: calc(
+      var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
+        calc(var(--md-comp-slider-handle-width, 4px) / 2)
+    ) !important; /* account for handle space and width */
+
+    & .MuiSlider-stopIndicator {
+      opacity: calc(
+        (var(--handle-position) - var(--index) * (100% / var(--interval)) - 1%) *
+          999
+      );
+      &:first-of-type {
+        left: 6px;
+        opacity: calc((var(--handle-position) - 3%) * 999);
+      }
+    }
+  }
+
+  &:last-child {
+    direction: rtl;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    flex: 1;
+
+    & .MuiSlider-stopIndicator {
+      opacity: calc(
+        (
+            100% - var(--handle-position) - var(--index) *
+              (100% / var(--interval)) - 1%
+          ) * 999
+      );
+      &:first-of-type {
+        right: 6px;
+        opacity: calc((97% - var(--handle-position)) * 999);
+      }
+    }
+  }
+
+  &:has(+ [data-dragging="true"]) {
     width: calc(
       var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
         calc(var(--md-comp-slider-handle-width, 4px) / 2) +
@@ -27,19 +65,10 @@
     ) !important; /* account for handle space and width */
   }
 }
-.MuiSlider-inactiveTrack {
-  height: 16px;
-  border-radius: 2px;
-  overflow: hidden; /* for hiding the dot indicators */
-  transition: 0.2s;
-
-  direction: rtl;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  color: var(--md-sys-color-on-secondary-container);
-  background: var(--md-sys-color-secondary-container);
-  flex: 1;
+:where(.MuiSlider-root:has(output[data-dragging="true"])) .MuiSlider-track {
+  transition: none;
 }
+
 .MuiSlider-handle {
   position: relative !important;
   transform: none !important;
@@ -89,10 +118,7 @@
     inset: 0;
   }
 }
-:where(.MuiSlider-root:has(output[data-dragging="true"]))
-  .MuiSlider-activeTrack {
-  transition: none;
-}
+
 .MuiSlider-stopIndicator {
   background: currentColor;
   color: inherit;
@@ -100,36 +126,12 @@
   width: 4px;
   height: 4px;
   border-radius: var(--md-sys-shape-corner-full);
+  position: absolute;
+  top: calc(50% - 4px / 2);
   &:not(:first-of-type) {
     margin-inline-start: calc(
       var(--index) * (100% / var(--interval)) -
         (var(--index) * 4px / var(--interval))
     );
-  }
-}
-:where(.MuiSlider-discrete) .MuiSlider-stopIndicator {
-  position: absolute;
-  top: calc(50% - 4px / 2);
-}
-:where(.MuiSlider-discrete .MuiSlider-activeTrack) .MuiSlider-stopIndicator {
-  opacity: calc(
-    (var(--handle-position) - var(--index) * (100% / var(--interval)) + 1%) *
-      999
-  );
-  &:first-of-type {
-    left: 6px;
-    opacity: calc((var(--handle-position) - 3%) * 999);
-  }
-}
-:where(.MuiSlider-discrete .MuiSlider-inactiveTrack) .MuiSlider-stopIndicator {
-  opacity: calc(
-    (
-        100% - var(--handle-position) - var(--index) * (100% / var(--interval)) -
-          1%
-      ) * 999
-  );
-  &:first-of-type {
-    right: 6px;
-    opacity: calc((97% - var(--handle-position)) * 999);
   }
 }

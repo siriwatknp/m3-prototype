@@ -52,8 +52,18 @@ export default function Page() {
 
       <h2>Indicators</h2>
       <div className="flex flex-col rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
-        <Slider defaultValue={50} variant="discrete" stopIndicators />
-        <Slider defaultValue={50} variant="discrete" stopIndicators={3} />
+        <Slider defaultValue={50} stopIndicators />
+        <Slider defaultValue={50} stopIndicators={3} />
+      </div>
+
+      <h2>Centered</h2>
+      <div className="flex flex-col rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
+        <Slider defaultValue={50} stopIndicators centered />
+      </div>
+
+      <h2>Range</h2>
+      <div className="flex flex-col rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
+        <Slider defaultValue={[25, 50]} stopIndicators />
       </div>
     </div>
   );
