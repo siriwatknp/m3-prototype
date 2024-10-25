@@ -1,6 +1,6 @@
 "use client";
 
-import Slider, { Slider2 } from "@/components/Slider/Slider";
+import Slider from "@/components/Slider/Slider";
 import { Leva, useControls, folder } from "leva";
 import { useEffect } from "react";
 
@@ -53,12 +53,7 @@ export default function Page() {
       <h2>Indicators</h2>
       <div className="flex flex-col rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
         <Slider defaultValue={50} variant="discrete" stopIndicators />
-      </div>
-
-      <h2>Base UI</h2>
-      <div className="flex flex-col rounded-lg justify-center border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800 gap-4">
-        <Slider2 />
-        <Slider2 variant="discrete" stopIndicators />
+        <Slider defaultValue={50} variant="discrete" stopIndicators={3} />
       </div>
     </div>
   );

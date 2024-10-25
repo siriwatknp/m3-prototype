@@ -65,7 +65,9 @@ export default function ComponentList() {
                     <Button variant="outlined">Outlined</Button>
                   </>
                 )}
-                {component.name === "Slider" && <Slider defaultValue={50} />}
+                {component.name === "Slider" && (
+                  <Slider defaultValue={50} className="w-full" />
+                )}
               </div>
             </CardContent>
             <CardContent>
