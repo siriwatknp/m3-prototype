@@ -6,6 +6,7 @@
 .MuiSlider-track {
   position: initial !important;
   height: 16px !important;
+  width: initial !important;
   border-radius: 2px;
   overflow: hidden; /* for hiding the dot indicators */
   transition: 0.2s;
@@ -20,10 +21,18 @@
   &:first-child {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    width: calc(
+    flex-basis: calc(
       var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
         calc(var(--md-comp-slider-handle-width, 4px) / 2)
-    ) !important; /* account for handle space and width */
+    ); /* account for handle space and width */
+
+    &:has(+ [data-dragging="true"]) {
+      flex-basis: calc(
+        var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
+          calc(var(--md-comp-slider-handle-width, 4px) / 2) +
+          calc(var(--md-comp-slider-handle-pressed-width, 2px) / 2)
+      ); /* account for handle space and width */
+    }
 
     & .MuiSlider-stopIndicator {
       opacity: calc(
@@ -41,30 +50,29 @@
     direction: rtl;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    flex: 1;
+    flex-basis: calc(
+      100% - var(--handle-position2, var(--handle-position)) -
+        var(--md-comp-slider-handle-space, 6px) -
+        calc(var(--md-comp-slider-handle-width, 4px) / 2)
+    ); /* account for handle space and width */
 
     & .MuiSlider-stopIndicator {
       opacity: calc(
         (
-            100% - var(--handle-position) - var(--index) *
-              (100% / var(--interval)) - 1%
+            100% - var(--handle-position2, var(--handle-position)) -
+              var(--index) * (100% / var(--interval)) - 1%
           ) * 999
       );
       &:first-of-type {
         right: 6px;
-        opacity: calc((97% - var(--handle-position)) * 999);
+        opacity: calc(
+          (97% - var(--handle-position2, var(--handle-position))) * 999
+        );
       }
     }
   }
-
-  &:has(+ [data-dragging="true"]) {
-    width: calc(
-      var(--handle-position) - var(--md-comp-slider-handle-space, 6px) -
-        calc(var(--md-comp-slider-handle-width, 4px) / 2) +
-        calc(var(--md-comp-slider-handle-pressed-width, 2px) / 2)
-    ) !important; /* account for handle space and width */
-  }
 }
+
 :where(.MuiSlider-root:has(output[data-dragging="true"])) .MuiSlider-track {
   transition: none;
 }
@@ -80,7 +88,7 @@
   );
   padding-right: min(
     var(--md-comp-slider-handle-space, 6px),
-    100% - var(--handle-position)
+    100% - var(--handle-position2, var(--handle-position))
   );
   height: 44px;
   color: var(--md-sys-color-primary);
@@ -134,4 +142,41 @@
         (var(--index) * 4px / var(--interval))
     );
   }
+}
+
+/* Range */
+.MuiSlider-track:not(:first-child):not(:last-child) {
+  flex: 1;
+  & .MuiSlider-stopIndicator {
+    left: 0px;
+    opacity: calc(
+      min(
+          var(--index) * 100% / var(--interval) - var(--handle-position),
+          var(--handle-position2) - var(--index) * 100% / var(--interval)
+        ) * 999
+    );
+
+    &:first-of-type {
+      left: 6px;
+    }
+    &:last-of-type {
+      left: -6px;
+    }
+  }
+}
+
+[data-dragging="true"] + .MuiTrack:last-child {
+  flex-basis: calc(
+    var(--handle-position2) - var(--md-comp-slider-handle-space, 6px) -
+      calc(var(--md-comp-slider-handle-width, 4px) / 2) +
+      calc(var(--md-comp-slider-handle-pressed-width, 2px) / 2)
+  ); /* account for handle space and width */
+}
+
+.MuiSlider-handleMinimum {
+  padding-right: var(--md-comp-slider-handle-space, 6px);
+}
+
+.MuiSlider-handleMaximum {
+  padding-left: var(--md-comp-slider-handle-space, 6px);
 }

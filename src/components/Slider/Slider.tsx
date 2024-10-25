@@ -18,6 +18,17 @@ function Slider({
     typeof stopIndicators === "boolean" && stopIndicators
       ? 10
       : (stopIndicators || 1) - 1;
+  const stops =
+    stopIndicators &&
+    [...Array(typeof stopIndicators === "number" ? stopIndicators : 11)].map(
+      (_, index) => (
+        <span
+          key={index}
+          className="MuiSlider-stopIndicator"
+          style={{ "--index": index } as React.CSSProperties}
+        />
+      )
+    );
   return (
     <BaseSlider.Root
       className={`MuiSlider-root ${
@@ -45,37 +56,17 @@ function Slider({
       <BaseSlider.Control>
         {Array.isArray(value) ? (
           <BaseSlider.Track className="MuiSlider-rail">
-            <span className="MuiSlider-inactiveTrack"></span>
-            <BaseSlider.Thumb className="MuiSlider-handle2" />
-            <BaseSlider.Indicator className="MuiSlider-activeTrack">
-              {stopIndicators &&
-                [
-                  ...Array(
-                    typeof stopIndicators === "number" ? stopIndicators : 11
-                  ),
-                ].map((_, index) => (
-                  <span
-                    key={index}
-                    className="MuiSlider-stopIndicator"
-                    style={{ "--index": index } as React.CSSProperties}
-                  />
-                ))}
+            <span className="MuiSlider-track">{stops}</span>
+            <BaseSlider.Thumb className="MuiSlider-handle MuiSlider-handleMinimum" />
+            <BaseSlider.Indicator
+              className={`MuiSlider-track ${
+                !centered ? "MuiSlider-activeTrack" : ""
+              }`}
+            >
+              {stops}
             </BaseSlider.Indicator>
-            <BaseSlider.Thumb className="MuiSlider-handle" />
-            <span className="MuiSlider-inactiveTrack">
-              {stopIndicators &&
-                [
-                  ...Array(
-                    typeof stopIndicators === "number" ? stopIndicators : 11
-                  ),
-                ].map((_, index) => (
-                  <span
-                    key={index}
-                    className="MuiSlider-stopIndicator"
-                    style={{ "--index": index } as React.CSSProperties}
-                  />
-                ))}
-            </span>
+            <BaseSlider.Thumb className="MuiSlider-handle MuiSlider-handleMaximum" />
+            <span className="MuiSlider-track">{stops}</span>
           </BaseSlider.Track>
         ) : (
           <BaseSlider.Track className="MuiSlider-rail">
@@ -84,34 +75,10 @@ function Slider({
                 !centered ? "MuiSlider-activeTrack" : ""
               }`}
             >
-              {stopIndicators &&
-                [
-                  ...Array(
-                    typeof stopIndicators === "number" ? stopIndicators : 11
-                  ),
-                ].map((_, index) => (
-                  <span
-                    key={index}
-                    className="MuiSlider-stopIndicator"
-                    style={{ "--index": index } as React.CSSProperties}
-                  />
-                ))}
+              {stops}
             </BaseSlider.Indicator>
             <BaseSlider.Thumb className="MuiSlider-handle" />
-            <span className="MuiSlider-track">
-              {stopIndicators &&
-                [
-                  ...Array(
-                    typeof stopIndicators === "number" ? stopIndicators : 11
-                  ),
-                ].map((_, index) => (
-                  <span
-                    key={index}
-                    className="MuiSlider-stopIndicator"
-                    style={{ "--index": index } as React.CSSProperties}
-                  />
-                ))}
-            </span>
+            <span className="MuiSlider-track">{stops}</span>
           </BaseSlider.Track>
         )}
       </BaseSlider.Control>
