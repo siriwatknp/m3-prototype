@@ -1,0 +1,376 @@
+.MuiTypography-root {
+  margin: 0;
+  padding: 0;
+}
+
+.MuiTypography-display-large {
+  font-family: var(
+    --md-comp-typography-display-large-font,
+    var(--md-sys-typescale-display-large-font)
+  );
+  font-weight: var(
+    --md-comp-typography-display-large-weight,
+    var(--md-sys-typescale-display-large-weight)
+  );
+  font-size: var(
+    --md-comp-typography-display-large-size,
+    var(--md-sys-typescale-display-large-size)
+  );
+  line-height: var(
+    --md-comp-typography-display-large-line-height,
+    var(--md-sys-typescale-display-large-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-display-large-tracking,
+    var(--md-sys-typescale-display-large-tracking)
+  );
+}
+
+.MuiTypography-display-medium {
+  font-family: var(
+    --md-comp-typography-display-medium-font,
+    var(--md-sys-typescale-display-medium-font)
+  );
+  font-weight: var(
+    --md-comp-typography-display-medium-weight,
+    var(--md-sys-typescale-display-medium-weight)
+  );
+  font-size: var(
+    --md-comp-typography-display-medium-size,
+    var(--md-sys-typescale-display-medium-size)
+  );
+  line-height: var(
+    --md-comp-typography-display-medium-line-height,
+    var(--md-sys-typescale-display-medium-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-display-medium-tracking,
+    var(--md-sys-typescale-display-medium-tracking)
+  );
+}
+
+.MuiTypography-display-small {
+  font-family: var(
+    --md-comp-typography-display-small-font,
+    var(--md-sys-typescale-display-small-font)
+  );
+  font-weight: var(
+    --md-comp-typography-display-small-weight,
+    var(--md-sys-typescale-display-small-weight)
+  );
+  font-size: var(
+    --md-comp-typography-display-small-size,
+    var(--md-sys-typescale-display-small-size)
+  );
+  line-height: var(
+    --md-comp-typography-display-small-line-height,
+    var(--md-sys-typescale-display-small-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-display-small-tracking,
+    var(--md-sys-typescale-display-small-tracking)
+  );
+}
+
+.MuiTypography-headline-large {
+  font-family: var(
+    --md-comp-typography-headline-large-font,
+    var(--md-sys-typescale-headline-large-font)
+  );
+  font-weight: var(
+    --md-comp-typography-headline-large-weight,
+    var(--md-sys-typescale-headline-large-weight)
+  );
+  font-size: var(
+    --md-comp-typography-headline-large-size,
+    var(--md-sys-typescale-headline-large-size)
+  );
+  line-height: var(
+    --md-comp-typography-headline-large-line-height,
+    var(--md-sys-typescale-headline-large-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-headline-large-tracking,
+    var(--md-sys-typescale-headline-large-tracking)
+  );
+}
+
+.MuiTypography-headline-medium {
+  font-family: var(
+    --md-comp-typography-headline-medium-font,
+    var(--md-sys-typescale-headline-medium-font)
+  );
+  font-weight: var(
+    --md-comp-typography-headline-medium-weight,
+    var(--md-sys-typescale-headline-medium-weight)
+  );
+  font-size: var(
+    --md-comp-typography-headline-medium-size,
+    var(--md-sys-typescale-headline-medium-size)
+  );
+  line-height: var(
+    --md-comp-typography-headline-medium-line-height,
+    var(--md-sys-typescale-headline-medium-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-headline-medium-tracking,
+    var(--md-sys-typescale-headline-medium-tracking)
+  );
+}
+
+.MuiTypography-headline-small {
+  font-family: var(
+    --md-comp-typography-headline-small-font,
+    var(--md-sys-typescale-headline-small-font)
+  );
+  font-weight: var(
+    --md-comp-typography-headline-small-weight,
+    var(--md-sys-typescale-headline-small-weight)
+  );
+  font-size: var(
+    --md-comp-typography-headline-small-size,
+    var(--md-sys-typescale-headline-small-size)
+  );
+  line-height: var(
+    --md-comp-typography-headline-small-line-height,
+    var(--md-sys-typescale-headline-small-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-headline-small-tracking,
+    var(--md-sys-typescale-headline-small-tracking)
+  );
+}
+
+.MuiTypography-title-large {
+  font-family: var(
+    --md-comp-typography-title-large-font,
+    var(--md-sys-typescale-title-large-font)
+  );
+  font-weight: var(
+    --md-comp-typography-title-large-weight,
+    var(--md-sys-typescale-title-large-weight)
+  );
+  font-size: var(
+    --md-comp-typography-title-large-size,
+    var(--md-sys-typescale-title-large-size)
+  );
+  line-height: var(
+    --md-comp-typography-title-large-line-height,
+    var(--md-sys-typescale-title-large-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-title-large-tracking,
+    var(--md-sys-typescale-title-large-tracking)
+  );
+}
+
+.MuiTypography-title-medium {
+  font-family: var(
+    --md-comp-typography-title-medium-font,
+    var(--md-sys-typescale-title-medium-font)
+  );
+  font-weight: var(
+    --md-comp-typography-title-medium-weight,
+    var(--md-sys-typescale-title-medium-weight)
+  );
+  font-size: var(
+    --md-comp-typography-title-medium-size,
+    var(--md-sys-typescale-title-medium-size)
+  );
+  line-height: var(
+    --md-comp-typography-title-medium-line-height,
+    var(--md-sys-typescale-title-medium-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-title-medium-tracking,
+    var(--md-sys-typescale-title-medium-tracking)
+  );
+}
+
+.MuiTypography-title-small {
+  font-family: var(
+    --md-comp-typography-title-small-font,
+    var(--md-sys-typescale-title-small-font)
+  );
+  font-weight: var(
+    --md-comp-typography-title-small-weight,
+    var(--md-sys-typescale-title-small-weight)
+  );
+  font-size: var(
+    --md-comp-typography-title-small-size,
+    var(--md-sys-typescale-title-small-size)
+  );
+  line-height: var(
+    --md-comp-typography-title-small-line-height,
+    var(--md-sys-typescale-title-small-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-title-small-tracking,
+    var(--md-sys-typescale-title-small-tracking)
+  );
+}
+
+.MuiTypography-label-large {
+  font-family: var(
+    --md-comp-typography-label-large-font,
+    var(--md-sys-typescale-label-large-font)
+  );
+  font-weight: var(
+    --md-comp-typography-label-large-weight,
+    var(--md-sys-typescale-label-large-weight)
+  );
+  font-size: var(
+    --md-comp-typography-label-large-size,
+    var(--md-sys-typescale-label-large-size)
+  );
+  line-height: var(
+    --md-comp-typography-label-large-line-height,
+    var(--md-sys-typescale-label-large-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-label-large-tracking,
+    var(--md-sys-typescale-label-large-tracking)
+  );
+}
+
+.MuiTypography-label-medium {
+  font-family: var(
+    --md-comp-typography-label-medium-font,
+    var(--md-sys-typescale-label-medium-font)
+  );
+  font-weight: var(
+    --md-comp-typography-label-medium-weight,
+    var(--md-sys-typescale-label-medium-weight)
+  );
+  font-size: var(
+    --md-comp-typography-label-medium-size,
+    var(--md-sys-typescale-label-medium-size)
+  );
+  line-height: var(
+    --md-comp-typography-label-medium-line-height,
+    var(--md-sys-typescale-label-medium-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-label-medium-tracking,
+    var(--md-sys-typescale-label-medium-tracking)
+  );
+}
+
+.MuiTypography-label-small {
+  font-family: var(
+    --md-comp-typography-label-small-font,
+    var(--md-sys-typescale-label-small-font)
+  );
+  font-weight: var(
+    --md-comp-typography-label-small-weight,
+    var(--md-sys-typescale-label-small-weight)
+  );
+  font-size: var(
+    --md-comp-typography-label-small-size,
+    var(--md-sys-typescale-label-small-size)
+  );
+  line-height: var(
+    --md-comp-typography-label-small-line-height,
+    var(--md-sys-typescale-label-small-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-label-small-tracking,
+    var(--md-sys-typescale-label-small-tracking)
+  );
+}
+
+.MuiTypography-body-large {
+  font-family: var(
+    --md-comp-typography-body-large-font,
+    var(--md-sys-typescale-body-large-font)
+  );
+  font-weight: var(
+    --md-comp-typography-body-large-weight,
+    var(--md-sys-typescale-body-large-weight)
+  );
+  font-size: var(
+    --md-comp-typography-body-large-size,
+    var(--md-sys-typescale-body-large-size)
+  );
+  line-height: var(
+    --md-comp-typography-body-large-line-height,
+    var(--md-sys-typescale-body-large-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-body-large-tracking,
+    var(--md-sys-typescale-body-large-tracking)
+  );
+}
+
+.MuiTypography-body-medium {
+  font-family: var(
+    --md-comp-typography-body-medium-font,
+    var(--md-sys-typescale-body-medium-font)
+  );
+  font-weight: var(
+    --md-comp-typography-body-medium-weight,
+    var(--md-sys-typescale-body-medium-weight)
+  );
+  font-size: var(
+    --md-comp-typography-body-medium-size,
+    var(--md-sys-typescale-body-medium-size)
+  );
+  line-height: var(
+    --md-comp-typography-body-medium-line-height,
+    var(--md-sys-typescale-body-medium-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-body-medium-tracking,
+    var(--md-sys-typescale-body-medium-tracking)
+  );
+}
+
+.MuiTypography-body-small {
+  font-family: var(
+    --md-comp-typography-body-small-font,
+    var(--md-sys-typescale-body-small-font)
+  );
+  font-weight: var(
+    --md-comp-typography-body-small-weight,
+    var(--md-sys-typescale-body-small-weight)
+  );
+  font-size: var(
+    --md-comp-typography-body-small-size,
+    var(--md-sys-typescale-body-small-size)
+  );
+  line-height: var(
+    --md-comp-typography-body-small-line-height,
+    var(--md-sys-typescale-body-small-line-height)
+  );
+  letter-spacing: var(
+    --md-comp-typography-body-small-tracking,
+    var(--md-sys-typescale-body-small-tracking)
+  );
+}
+
+/* Colors */
+.MuiTypography-primary {
+  color: var(--md-comp-typography-color-primary, var(--md-sys-color-primary));
+}
+
+.MuiTypography-secondary {
+  color: var(
+    --md-comp-typography-color-secondary,
+    var(--md-sys-color-secondary)
+  );
+}
+
+.MuiTypography-tertiary {
+  color: var(--md-comp-typography-color-tertiary, var(--md-sys-color-tertiary));
+}
+
+.MuiTypography-error {
+  color: var(--md-comp-typography-color-error, var(--md-sys-color-error));
+}
+
+.MuiTypography-on-surface {
+  color: var(
+    --md-comp-typography-color-on-surface,
+    var(--md-sys-color-on-surface)
+  );
+}

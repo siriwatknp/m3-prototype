@@ -1,361 +1,200 @@
 "use client";
 
 import Button from "@/components/Button/Button";
-import { Leva, useControls, folder } from "leva";
-import { useEffect } from "react";
+import { Leva } from "leva";
+import { useLevaOverrides } from "@/hooks/useLevaOverrides";
 
-function useButtonOverrides() {
-  const defaultValues = {
-    "--md-comp-button-transition":
-      "var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium1)",
-    "--md-comp-button-corner": "var(--md-sys-shape-corner-full)",
+const defaultValues = {
+  "--md-comp-button-transition":
+    "var(--md-sys-motion-easing-standard) var(--md-ref-motion-duration-medium1)",
+  "--md-comp-button-corner": "var(--md-sys-shape-corner-full)",
 
-    // Medium Button
-    "--md-comp-button-medium-height": "var(--md-ref-spacing-10)",
-    "--md-comp-button-medium-padding-inline": "var(--md-ref-spacing-6)",
-    "--md-comp-button-medium-gap": "var(--md-ref-spacing-2)",
-    "--md-comp-button-medium-font-size":
-      "var(--md-sys-typescale-label-large-size)",
-    // Small Button
-    "--md-comp-button-small-height": "var(--md-ref-spacing-7)",
-    "--md-comp-button-small-padding-inline": "var(--md-ref-spacing-5)",
-    "--md-comp-button-small-gap": "var(--md-ref-spacing-2)",
-    "--md-comp-button-small-font-size":
-      "var(--md-sys-typescale-label-medium-size)",
-    // Large Button
-    "--md-comp-button-large-height": "var(--md-ref-spacing-9)",
-    "--md-comp-button-large-padding-inline": "var(--md-ref-spacing-7)",
-    "--md-comp-button-large-gap": "var(--md-ref-spacing-2)",
-    "--md-comp-button-large-font-size": "var(--md-ref-typeface-size-4)",
+  // Medium Button
+  "--md-comp-button-medium-height": "var(--md-ref-spacing-10)",
+  "--md-comp-button-medium-padding-inline": "var(--md-ref-spacing-6)",
+  "--md-comp-button-medium-gap": "var(--md-ref-spacing-2)",
+  "--md-comp-button-medium-font-size":
+    "var(--md-sys-typescale-label-large-size)",
 
-    // Elevated Button
-    "--md-comp-button-elevated-shadow":
-      "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
-    "--md-comp-button-elevated-color": "rgb(101, 85, 143)",
-    "--md-comp-button-elevated-background": "rgb(247, 242, 250)",
-    "--md-comp-button-elevated-hover-shadow":
-      "rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px",
-    "--md-comp-button-elevated-hover-background": "rgb(238, 232, 242)",
-    "--md-comp-button-elevated-focus-shadow":
-      "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
-    "--md-comp-button-elevated-focus-background": "rgb(235, 228, 240)",
-    "--md-comp-button-elevated-active-shadow":
-      "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
-    "--md-comp-button-elevated-active-background": "rgb(235, 228, 240)",
-    "--md-comp-button-elevated-disabled-color": "rgba(28, 27, 31, 0.38)",
-    "--md-comp-button-elevated-disabled-background": "rgba(28, 27, 31, 0.12)",
-    "--md-comp-button-elevated-disabled-shadow": "none",
+  // Small Button
+  "--md-comp-button-small-height": "var(--md-ref-spacing-7)",
+  "--md-comp-button-small-padding-inline": "var(--md-ref-spacing-5)",
+  "--md-comp-button-small-gap": "var(--md-ref-spacing-2)",
+  "--md-comp-button-small-font-size":
+    "var(--md-sys-typescale-label-medium-size)",
 
-    // Filled Button
-    "--md-comp-button-filled-shadow": "none",
-    "--md-comp-button-filled-background": "rgb(101, 85, 143)",
-    "--md-comp-button-filled-color": "rgb(255, 255, 255)",
-    "--md-comp-button-filled-hover-shadow":
-      "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
-    "--md-comp-button-filled-hover-background": "rgb(93, 78, 132)",
-    "--md-comp-button-filled-focus-shadow": "none",
-    "--md-comp-button-filled-focus-background": "rgb(91, 76, 129)",
-    "--md-comp-button-filled-active-shadow": "none",
-    "--md-comp-button-filled-active-background": "rgb(91, 76, 129)",
-    "--md-comp-button-filled-disabled-color": "rgba(28, 27, 31, 0.38)",
-    "--md-comp-button-filled-disabled-background": "rgba(28, 27, 31, 0.12)",
-    "--md-comp-button-filled-disabled-shadow": "none",
+  // Large Button
+  "--md-comp-button-large-height": "var(--md-ref-spacing-9)",
+  "--md-comp-button-large-padding-inline": "var(--md-ref-spacing-7)",
+  "--md-comp-button-large-gap": "var(--md-ref-spacing-2)",
+  "--md-comp-button-large-font-size": "var(--md-ref-typeface-size-4)",
 
-    // Text Button
-    "--md-comp-button-text-background": "transparent",
-    "--md-comp-button-text-color": "rgb(101, 85, 143)",
-    "--md-comp-button-text-hover-background": "rgba(101, 85, 143, 0.08)",
-    "--md-comp-button-text-focus-background": "rgba(101, 85, 143, 0.1)",
-    "--md-comp-button-text-active-background": "rgba(101, 85, 143, 0.1)",
-    "--md-comp-button-text-disabled-color": "rgba(28, 27, 31, 0.38)",
-    "--md-comp-button-text-disabled-background": "rgba(28, 27, 31, 0.12)",
-    "--md-comp-button-text-disabled-shadow": "none",
+  // Elevated Button
+  "--md-comp-button-elevated-shadow":
+    "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
+  "--md-comp-button-elevated-color": "rgb(101, 85, 143)",
+  "--md-comp-button-elevated-background": "rgb(247, 242, 250)",
+  "--md-comp-button-elevated-hover-shadow":
+    "rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px",
+  "--md-comp-button-elevated-hover-background": "rgb(238, 232, 242)",
+  "--md-comp-button-elevated-focus-shadow":
+    "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
+  "--md-comp-button-elevated-focus-background": "rgb(235, 228, 240)",
+  "--md-comp-button-elevated-active-shadow":
+    "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
+  "--md-comp-button-elevated-active-background": "rgb(235, 228, 240)",
+  "--md-comp-button-elevated-disabled-color": "rgba(28, 27, 31, 0.38)",
+  "--md-comp-button-elevated-disabled-background": "rgba(28, 27, 31, 0.12)",
+  "--md-comp-button-elevated-disabled-shadow": "none",
 
-    // Outlined Button
-    "--md-comp-button-outlined-border-color": "rgb(121, 116, 126)",
-    "--md-comp-button-outlined-color": "rgb(101, 85, 143)",
-    "--md-comp-button-outlined-background": "transparent",
-    "--md-comp-button-outlined-hover-border-color": "rgb(121, 116, 126)",
-    "--md-comp-button-outlined-hover-background": "rgba(101, 85, 143, 0.08)",
-    "--md-comp-button-outlined-focus-border-color": "rgb(121, 116, 126)",
-    "--md-comp-button-outlined-focus-background": "rgba(101, 85, 143, 0.1)",
-    "--md-comp-button-outlined-active-border-color": "rgb(121, 116, 126)",
-    "--md-comp-button-outlined-active-background": "rgba(101, 85, 143, 0.1)",
-    "--md-comp-button-outlined-disabled-color": "rgba(28, 27, 31, 0.38)",
-    "--md-comp-button-outlined-disabled-background": "transparent",
-    "--md-comp-button-outlined-disabled-border-color": "rgba(28, 27, 31, 0.12)",
+  // Filled Button
+  "--md-comp-button-filled-shadow": "none",
+  "--md-comp-button-filled-background": "rgb(101, 85, 143)",
+  "--md-comp-button-filled-color": "rgb(255, 255, 255)",
+  "--md-comp-button-filled-hover-shadow":
+    "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
+  "--md-comp-button-filled-hover-background": "rgb(93, 78, 132)",
+  "--md-comp-button-filled-focus-shadow": "none",
+  "--md-comp-button-filled-focus-background": "rgb(91, 76, 129)",
+  "--md-comp-button-filled-active-shadow": "none",
+  "--md-comp-button-filled-active-background": "rgb(91, 76, 129)",
+  "--md-comp-button-filled-disabled-color": "rgba(28, 27, 31, 0.38)",
+  "--md-comp-button-filled-disabled-background": "rgba(28, 27, 31, 0.12)",
+  "--md-comp-button-filled-disabled-shadow": "none",
 
-    // Filled Tonal Button
-    "--md-comp-button-filled-tonal-shadow": "none",
-    "--md-comp-button-filled-tonal-background": "rgb(232, 222, 248)",
-    "--md-comp-button-filled-tonal-color": "rgb(29, 25, 43)",
-    "--md-comp-button-filledTonal-hover-shadow":
-      "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
-    "--md-comp-button-filledTonal-hover-background": "rgb(223, 212, 240)",
-    "--md-comp-button-filledTonal-focus-shadow": "none",
-    "--md-comp-button-filledTonal-focus-background": "rgb(220, 208, 238)",
-    "--md-comp-button-filledTonal-active-shadow": "none",
-    "--md-comp-button-filledTonal-active-background": "rgb(220, 208, 238)",
-    "--md-comp-button-filledTonal-disabled-color": "rgba(28, 27, 31, 0.38)",
-    "--md-comp-button-filledTonal-disabled-background":
-      "rgba(28, 27, 31, 0.12)",
-    "--md-comp-button-filledTonal-disabled-shadow": "none",
-  };
+  // Text Button
+  "--md-comp-button-text-background": "transparent",
+  "--md-comp-button-text-color": "rgb(101, 85, 143)",
+  "--md-comp-button-text-hover-background": "rgba(101, 85, 143, 0.08)",
+  "--md-comp-button-text-focus-background": "rgba(101, 85, 143, 0.1)",
+  "--md-comp-button-text-active-background": "rgba(101, 85, 143, 0.1)",
+  "--md-comp-button-text-disabled-color": "rgba(28, 27, 31, 0.38)",
+  "--md-comp-button-text-disabled-background": "rgba(28, 27, 31, 0.12)",
+  "--md-comp-button-text-disabled-shadow": "none",
 
-  const values = useControls({
-    "--md-comp-button-corner": {
-      value: defaultValues["--md-comp-button-corner"],
-    },
-    "--md-comp-button-transition": {
-      value: defaultValues["--md-comp-button-transition"],
-    },
-    "size: small": folder({
-      "--md-comp-button-small-height": {
-        value: defaultValues["--md-comp-button-small-height"],
-      },
-      "--md-comp-button-small-padding-inline": {
-        value: defaultValues["--md-comp-button-small-padding-inline"],
-      },
-      "--md-comp-button-small-gap": {
-        value: defaultValues["--md-comp-button-small-gap"],
-      },
-      "--md-comp-button-small-font-size": {
-        value: defaultValues["--md-comp-button-small-font-size"],
-      },
-    }),
-    "size: medium": folder({
-      "--md-comp-button-medium-height": {
-        value: defaultValues["--md-comp-button-medium-height"],
-      },
-      "--md-comp-button-medium-padding-inline": {
-        value: defaultValues["--md-comp-button-medium-padding-inline"],
-      },
-      "--md-comp-button-medium-gap": {
-        value: defaultValues["--md-comp-button-medium-gap"],
-      },
-      "--md-comp-button-medium-font-size": {
-        value: defaultValues["--md-comp-button-medium-font-size"],
-      },
-    }),
-    "size: large": folder({
-      "--md-comp-button-large-height": {
-        value: defaultValues["--md-comp-button-large-height"],
-      },
-      "--md-comp-button-large-padding-inline": {
-        value: defaultValues["--md-comp-button-large-padding-inline"],
-      },
-      "--md-comp-button-large-gap": {
-        value: defaultValues["--md-comp-button-large-gap"],
-      },
-      "--md-comp-button-large-font-size": {
-        value: defaultValues["--md-comp-button-large-font-size"],
-      },
-    }),
-    "variant: elevated": folder({
-      "--md-comp-button-elevated-shadow": {
-        value: defaultValues["--md-comp-button-elevated-shadow"],
-      },
-      "--md-comp-button-elevated-color": {
-        value: defaultValues["--md-comp-button-elevated-color"],
-      },
-      "--md-comp-button-elevated-background": {
-        value: defaultValues["--md-comp-button-elevated-background"],
-      },
-      "--md-comp-button-elevated-hover-shadow": {
-        value: defaultValues["--md-comp-button-elevated-hover-shadow"],
-      },
-      "--md-comp-button-elevated-hover-background": {
-        value: defaultValues["--md-comp-button-elevated-hover-background"],
-      },
-      "--md-comp-button-elevated-focus-shadow": {
-        value: defaultValues["--md-comp-button-elevated-focus-shadow"],
-      },
-      "--md-comp-button-elevated-focus-background": {
-        value: defaultValues["--md-comp-button-elevated-focus-background"],
-      },
-      "--md-comp-button-elevated-active-shadow": {
-        value: defaultValues["--md-comp-button-elevated-active-shadow"],
-      },
-      "--md-comp-button-elevated-active-background": {
-        value: defaultValues["--md-comp-button-elevated-active-background"],
-      },
-      "--md-comp-button-elevated-disabled-color": {
-        value: defaultValues["--md-comp-button-elevated-disabled-color"],
-      },
-      "--md-comp-button-elevated-disabled-background": {
-        value: defaultValues["--md-comp-button-elevated-disabled-background"],
-      },
-      "--md-comp-button-elevated-disabled-shadow": {
-        value: defaultValues["--md-comp-button-elevated-disabled-shadow"],
-      },
-    }),
-    "variant: filled": folder({
-      "--md-comp-button-filled-shadow": {
-        value: defaultValues["--md-comp-button-filled-shadow"],
-      },
-      "--md-comp-button-filled-background": {
-        value: defaultValues["--md-comp-button-filled-background"],
-      },
-      "--md-comp-button-filled-color": {
-        value: defaultValues["--md-comp-button-filled-color"],
-      },
-      "--md-comp-button-filled-hover-shadow": {
-        value: defaultValues["--md-comp-button-filled-hover-shadow"],
-      },
-      "--md-comp-button-filled-hover-background": {
-        value: defaultValues["--md-comp-button-filled-hover-background"],
-      },
-      "--md-comp-button-filled-focus-shadow": {
-        value: defaultValues["--md-comp-button-filled-focus-shadow"],
-      },
-      "--md-comp-button-filled-focus-background": {
-        value: defaultValues["--md-comp-button-filled-focus-background"],
-      },
-      "--md-comp-button-filled-active-shadow": {
-        value: defaultValues["--md-comp-button-filled-active-shadow"],
-      },
-      "--md-comp-button-filled-active-background": {
-        value: defaultValues["--md-comp-button-filled-active-background"],
-      },
-      "--md-comp-button-filled-disabled-color": {
-        value: defaultValues["--md-comp-button-filled-disabled-color"],
-      },
-      "--md-comp-button-filled-disabled-background": {
-        value: defaultValues["--md-comp-button-filled-disabled-background"],
-      },
-      "--md-comp-button-filled-disabled-shadow": {
-        value: defaultValues["--md-comp-button-filled-disabled-shadow"],
-      },
-    }),
-    "variant: filledTonal": folder({
-      "--md-comp-button-filled-tonal-shadow": {
-        value: defaultValues["--md-comp-button-filled-tonal-shadow"],
-      },
-      "--md-comp-button-filled-tonal-background": {
-        value: defaultValues["--md-comp-button-filled-tonal-background"],
-      },
-      "--md-comp-button-filled-tonal-color": {
-        value: defaultValues["--md-comp-button-filled-tonal-color"],
-      },
-      "--md-comp-button-filledTonal-hover-shadow": {
-        value: defaultValues["--md-comp-button-filledTonal-hover-shadow"],
-      },
-      "--md-comp-button-filledTonal-hover-background": {
-        value: defaultValues["--md-comp-button-filledTonal-hover-background"],
-      },
-      "--md-comp-button-filledTonal-focus-shadow": {
-        value: defaultValues["--md-comp-button-filledTonal-focus-shadow"],
-      },
-      "--md-comp-button-filledTonal-focus-background": {
-        value: defaultValues["--md-comp-button-filledTonal-focus-background"],
-      },
-      "--md-comp-button-filledTonal-active-shadow": {
-        value: defaultValues["--md-comp-button-filledTonal-active-shadow"],
-      },
-      "--md-comp-button-filledTonal-active-background": {
-        value: defaultValues["--md-comp-button-filledTonal-active-background"],
-      },
-      "--md-comp-button-filledTonal-disabled-color": {
-        value: defaultValues["--md-comp-button-filledTonal-disabled-color"],
-      },
-      "--md-comp-button-filledTonal-disabled-background": {
-        value:
-          defaultValues["--md-comp-button-filledTonal-disabled-background"],
-      },
-      "--md-comp-button-filledTonal-disabled-shadow": {
-        value: defaultValues["--md-comp-button-filledTonal-disabled-shadow"],
-      },
-    }),
-    "variant: text": folder({
-      "--md-comp-button-text-background": {
-        value: defaultValues["--md-comp-button-text-background"],
-      },
-      "--md-comp-button-text-color": {
-        value: defaultValues["--md-comp-button-text-color"],
-      },
-      "--md-comp-button-text-hover-background": {
-        value: defaultValues["--md-comp-button-text-hover-background"],
-      },
-      "--md-comp-button-text-focus-background": {
-        value: defaultValues["--md-comp-button-text-focus-background"],
-      },
-      "--md-comp-button-text-active-background": {
-        value: defaultValues["--md-comp-button-text-active-background"],
-      },
-      "--md-comp-button-text-disabled-color": {
-        value: defaultValues["--md-comp-button-text-disabled-color"],
-      },
-      "--md-comp-button-text-disabled-background": {
-        value: defaultValues["--md-comp-button-text-disabled-background"],
-      },
-      "--md-comp-button-text-disabled-shadow": {
-        value: defaultValues["--md-comp-button-text-disabled-shadow"],
-      },
-    }),
-    "variant: outlined": folder({
-      "--md-comp-button-outlined-border-color": {
-        value: defaultValues["--md-comp-button-outlined-border-color"],
-      },
-      "--md-comp-button-outlined-color": {
-        value: defaultValues["--md-comp-button-outlined-color"],
-      },
-      "--md-comp-button-outlined-background": {
-        value: defaultValues["--md-comp-button-outlined-background"],
-      },
-      "--md-comp-button-outlined-hover-border-color": {
-        value: defaultValues["--md-comp-button-outlined-hover-border-color"],
-      },
-      "--md-comp-button-outlined-hover-background": {
-        value: defaultValues["--md-comp-button-outlined-hover-background"],
-      },
-      "--md-comp-button-outlined-focus-border-color": {
-        value: defaultValues["--md-comp-button-outlined-focus-border-color"],
-      },
-      "--md-comp-button-outlined-focus-background": {
-        value: defaultValues["--md-comp-button-outlined-focus-background"],
-      },
-      "--md-comp-button-outlined-active-border-color": {
-        value: defaultValues["--md-comp-button-outlined-active-border-color"],
-      },
-      "--md-comp-button-outlined-active-background": {
-        value: defaultValues["--md-comp-button-outlined-active-background"],
-      },
-      "--md-comp-button-outlined-disabled-color": {
-        value: defaultValues["--md-comp-button-outlined-disabled-color"],
-      },
-      "--md-comp-button-outlined-disabled-background": {
-        value: defaultValues["--md-comp-button-outlined-disabled-background"],
-      },
-      "--md-comp-button-outlined-disabled-border-color": {
-        value: defaultValues["--md-comp-button-outlined-disabled-border-color"],
-      },
-    }),
-  });
+  // Outlined Button
+  "--md-comp-button-outlined-border-color": "rgb(121, 116, 126)",
+  "--md-comp-button-outlined-color": "rgb(101, 85, 143)",
+  "--md-comp-button-outlined-background": "transparent",
+  "--md-comp-button-outlined-hover-border-color": "rgb(121, 116, 126)",
+  "--md-comp-button-outlined-hover-background": "rgba(101, 85, 143, 0.08)",
+  "--md-comp-button-outlined-focus-border-color": "rgb(121, 116, 126)",
+  "--md-comp-button-outlined-focus-background": "rgba(101, 85, 143, 0.1)",
+  "--md-comp-button-outlined-active-border-color": "rgb(121, 116, 126)",
+  "--md-comp-button-outlined-active-background": "rgba(101, 85, 143, 0.1)",
+  "--md-comp-button-outlined-disabled-color": "rgba(28, 27, 31, 0.38)",
+  "--md-comp-button-outlined-disabled-background": "transparent",
+  "--md-comp-button-outlined-disabled-border-color": "rgba(28, 27, 31, 0.12)",
 
-  useEffect(() => {
-    const elements = document.querySelectorAll(
-      "[data-button-override]"
-    ) as NodeListOf<HTMLElement>;
-    elements.forEach((elm) => {
-      Object.entries(values).forEach(([key, value]) => {
-        if (value === defaultValues[key as keyof typeof defaultValues]) {
-          // the value is the same as default
-          elm.style.removeProperty(key);
-        } else {
-          elm.style.setProperty(
-            key,
-            typeof value === "number" ? `${value}px` : value
-          );
-        }
-      });
-    });
-  }, [values]);
+  // Filled Tonal Button
+  "--md-comp-button-filled-tonal-shadow": "none",
+  "--md-comp-button-filled-tonal-background": "rgb(232, 222, 248)",
+  "--md-comp-button-filled-tonal-color": "rgb(29, 25, 43)",
+  "--md-comp-button-filledTonal-hover-shadow":
+    "rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px",
+  "--md-comp-button-filledTonal-hover-background": "rgb(223, 212, 240)",
+  "--md-comp-button-filledTonal-focus-shadow": "none",
+  "--md-comp-button-filledTonal-focus-background": "rgb(220, 208, 238)",
+  "--md-comp-button-filledTonal-active-shadow": "none",
+  "--md-comp-button-filledTonal-active-background": "rgb(220, 208, 238)",
+  "--md-comp-button-filledTonal-disabled-color": "rgba(28, 27, 31, 0.38)",
+  "--md-comp-button-filledTonal-disabled-background": "rgba(28, 27, 31, 0.12)",
+  "--md-comp-button-filledTonal-disabled-shadow": "none",
+} as const;
 
-  return values;
-}
+const buttonFolders: Record<string, string[]> = {
+  "size: small": [
+    "--md-comp-button-small-height",
+    "--md-comp-button-small-padding-inline",
+    "--md-comp-button-small-gap",
+    "--md-comp-button-small-font-size",
+  ],
+  "size: medium": [
+    "--md-comp-button-medium-height",
+    "--md-comp-button-medium-padding-inline",
+    "--md-comp-button-medium-gap",
+    "--md-comp-button-medium-font-size",
+  ],
+  "size: large": [
+    "--md-comp-button-large-height",
+    "--md-comp-button-large-padding-inline",
+    "--md-comp-button-large-gap",
+    "--md-comp-button-large-font-size",
+  ],
+  "variant: elevated": [
+    "--md-comp-button-elevated-shadow",
+    "--md-comp-button-elevated-color",
+    "--md-comp-button-elevated-background",
+    "--md-comp-button-elevated-hover-shadow",
+    "--md-comp-button-elevated-hover-background",
+    "--md-comp-button-elevated-focus-shadow",
+    "--md-comp-button-elevated-focus-background",
+    "--md-comp-button-elevated-active-shadow",
+    "--md-comp-button-elevated-active-background",
+    "--md-comp-button-elevated-disabled-color",
+    "--md-comp-button-elevated-disabled-background",
+    "--md-comp-button-elevated-disabled-shadow",
+  ],
+  "variant: filled": [
+    "--md-comp-button-filled-shadow",
+    "--md-comp-button-filled-background",
+    "--md-comp-button-filled-color",
+    "--md-comp-button-filled-hover-shadow",
+    "--md-comp-button-filled-hover-background",
+    "--md-comp-button-filled-focus-shadow",
+    "--md-comp-button-filled-focus-background",
+    "--md-comp-button-filled-active-shadow",
+    "--md-comp-button-filled-active-background",
+    "--md-comp-button-filled-disabled-color",
+    "--md-comp-button-filled-disabled-background",
+    "--md-comp-button-filled-disabled-shadow",
+  ],
+  "variant: text": [
+    "--md-comp-button-text-background",
+    "--md-comp-button-text-color",
+    "--md-comp-button-text-hover-background",
+    "--md-comp-button-text-focus-background",
+    "--md-comp-button-text-active-background",
+    "--md-comp-button-text-disabled-color",
+    "--md-comp-button-text-disabled-background",
+    "--md-comp-button-text-disabled-shadow",
+  ],
+  "variant: outlined": [
+    "--md-comp-button-outlined-border-color",
+    "--md-comp-button-outlined-color",
+    "--md-comp-button-outlined-background",
+    "--md-comp-button-outlined-hover-border-color",
+    "--md-comp-button-outlined-hover-background",
+    "--md-comp-button-outlined-focus-border-color",
+    "--md-comp-button-outlined-focus-background",
+    "--md-comp-button-outlined-active-border-color",
+    "--md-comp-button-outlined-active-background",
+    "--md-comp-button-outlined-disabled-color",
+    "--md-comp-button-outlined-disabled-background",
+    "--md-comp-button-outlined-disabled-border-color",
+  ],
+  "variant: filledTonal": [
+    "--md-comp-button-filled-tonal-shadow",
+    "--md-comp-button-filled-tonal-background",
+    "--md-comp-button-filled-tonal-color",
+    "--md-comp-button-filledTonal-hover-shadow",
+    "--md-comp-button-filledTonal-hover-background",
+    "--md-comp-button-filledTonal-focus-shadow",
+    "--md-comp-button-filledTonal-focus-background",
+    "--md-comp-button-filledTonal-active-shadow",
+    "--md-comp-button-filledTonal-active-background",
+    "--md-comp-button-filledTonal-disabled-color",
+    "--md-comp-button-filledTonal-disabled-background",
+    "--md-comp-button-filledTonal-disabled-shadow",
+  ],
+};
 
 export default function Page() {
-  useButtonOverrides();
+  useLevaOverrides(defaultValues, {
+    dataAttribute: "data-button-override",
+    folders: buttonFolders,
+  });
+
   return (
     <div className="prose dark:prose-invert max-w-[700px] mx-auto py-5 px-2">
       <Leva oneLineLabels />

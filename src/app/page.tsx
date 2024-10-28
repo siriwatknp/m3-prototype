@@ -8,6 +8,7 @@ import {
 } from "@/shadcn/ui/card";
 import Button from "@/components/Button/Button";
 import { ExternalLink } from "lucide-react";
+import Typography from "@/components/Typography/Typography";
 
 // Define the structure for our component data
 type ComponentVersion = {
@@ -33,6 +34,16 @@ const components: ComponentItem[] = [
       },
     ],
   },
+  {
+    name: "Typography",
+    description: "Text styles for digital reading",
+    versions: [
+      {
+        version: "classes + public vars",
+        route: "/material-ui/react-typography",
+      },
+    ],
+  },
 ];
 
 export default function ComponentList() {
@@ -47,9 +58,19 @@ export default function ComponentList() {
               <CardDescription>{component.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="p-4 text-center bg-slate-100 rounded-md -my-2 gap-2 flex justify-center">
-                <Button variant="filled">Filled</Button>
-                <Button variant="outlined">Outlined</Button>
+              <div className="p-4 text-center bg-slate-100 rounded-md -my-2 gap-2 flex flex-col justify-center">
+                {component.name === "Button" && (
+                  <div className="flex gap-2 justify-center">
+                    <Button variant="filled">Filled</Button>
+                    <Button variant="outlined">Outlined</Button>
+                  </div>
+                )}
+                {component.name === "Typography" && (
+                  <>
+                    <Typography variant="headline-large">Headline</Typography>
+                    <Typography variant="body-medium">Body text</Typography>
+                  </>
+                )}
               </div>
             </CardContent>
             <CardContent>
