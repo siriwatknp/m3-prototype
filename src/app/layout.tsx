@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../components/Button/Button.css";
+import "../components/Typography/Typography.css";
 import "./globals.css";
 import "./m3-theme.css";
 import { ThemeProvider } from "@/shadcn/ui/theme-provider";

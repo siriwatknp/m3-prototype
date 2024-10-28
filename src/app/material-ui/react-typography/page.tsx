@@ -4,6 +4,7 @@ import Typography from "@/components/Typography/Typography";
 import { Leva } from "leva";
 import { useLevaOverrides } from "@/hooks/useLevaOverrides";
 import { type TypographyVariant } from "@/components/Typography/Typography";
+import Link from "next/link";
 
 // Define the variants array
 const variants: TypographyVariant[] = [
@@ -267,7 +268,7 @@ export default function Page() {
       <h2>All Variants</h2>
       <div
         data-typography-override
-        className="flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800"
+        className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800"
       >
         {variants.map((variant) => (
           <Typography key={variant} variant={variant}>
@@ -277,7 +278,7 @@ export default function Page() {
       </div>
 
       <h2>Semantic Elements</h2>
-      <div className="flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
         <Typography variant="headline-large" component="h1">
           Heading 1
         </Typography>
@@ -290,7 +291,7 @@ export default function Page() {
       </div>
 
       <h2>Colors</h2>
-      <div className="flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
         <Typography variant="headline-small" color="primary">
           Primary Color Text
         </Typography>
@@ -305,6 +306,32 @@ export default function Page() {
         </Typography>
         <Typography variant="headline-small" color="on-surface">
           On Surface Color Text
+        </Typography>
+      </div>
+
+      <h2>Link</h2>
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+        <Typography>
+          <Link href="#">Default Link</Link>
+        </Typography>
+        <Typography underline="none" color="primary">
+          <Link href="#">No underline link</Link>
+        </Typography>
+        <Typography underline="hover" color="primary">
+          <Link href="#">Hover underline link</Link>
+        </Typography>
+        <Typography underline="always" color="primary">
+          <Link href="#">Always underline link</Link>
+        </Typography>
+        <Typography variant="body-small">
+          By clicking "Accept", you agree to our{" "}
+          <Typography underline="hover" color="error">
+            <Link href="/terms">Terms of Service</Link>
+          </Typography>{" "}
+          and{" "}
+          <Typography underline="hover" color="error">
+            <Link href="/privacy">Privacy Policy</Link>
+          </Typography>
         </Typography>
       </div>
     </div>

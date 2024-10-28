@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
-import "./Typography.css";
 
 export type TypographyVariant =
   | "display-large"
@@ -26,18 +25,31 @@ export type TypographyColor =
   | "error"
   | "on-surface";
 
-export interface TypographyProps extends React.HTMLAttributes<HTMLDivElement> {
+export type TypographyUnderline = "none" | "hover" | "always";
+
+export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * @default body-medium
    */
   variant?: TypographyVariant;
   color?: TypographyColor;
   component?: keyof JSX.IntrinsicElements;
+  underline?: TypographyUnderline;
 }
 
-const Typography = forwardRef<HTMLDivElement, TypographyProps>(
-  ({ className, variant = "body-medium", color, component, ...props }, ref) => {
-    const Component = (component || "div") as "div";
+const Typography = forwardRef<HTMLElement, TypographyProps>(
+  (
+    {
+      className,
+      variant = "body-medium",
+      color,
+      component,
+      underline,
+      ...props
+    },
+    ref
+  ) => {
+    const Component = component || "div";
 
     return (
       <Component
@@ -46,6 +58,7 @@ const Typography = forwardRef<HTMLDivElement, TypographyProps>(
           "MuiTypography-root",
           `MuiTypography-${variant}`,
           color && `MuiTypography-${color}`,
+          underline && `MuiTypography-underline-${underline}`,
           className
         )}
         {...props}
