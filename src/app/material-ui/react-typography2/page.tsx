@@ -392,7 +392,7 @@ export default function Page() {
       <h2>Label</h2>
       <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
         <div className="space-y-4">
-          <Span variant="label-large" color="secondary" className="mb-4">
+          <Span variant="label-large" color="secondary">
             Shop popular categories:
           </Span>
 

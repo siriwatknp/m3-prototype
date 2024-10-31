@@ -1,6 +1,9 @@
 .MuiTypography2-root {
   margin: 0;
   padding: 0;
+  &:where(a, span) {
+    display: inline-block;
+  }
 }
 
 .MuiTypography2-inline {
