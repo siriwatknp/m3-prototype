@@ -281,7 +281,9 @@ export default function Page() {
         data-typography2-override
         className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800"
       >
-        <H1>display-large - The quick brown fox jumps.</H1>
+        <H1 variant="display-large">
+          display-large - The quick brown fox jumps.
+        </H1>
         <H1 variant="display-medium">
           display-medium - The quick brown fox jumps.
         </H1>
