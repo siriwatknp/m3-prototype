@@ -42,6 +42,10 @@ const components: ComponentItem[] = [
         version: "classes + public vars",
         route: "/material-ui/react-typography",
       },
+      {
+        version: "classes + public vars (semantic)",
+        route: "/material-ui/react-typography2",
+      },
     ],
   },
 ];

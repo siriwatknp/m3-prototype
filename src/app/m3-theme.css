@@ -7,8 +7,8 @@
   --md-ref-typeface-brand: var(--font-geist-sans);
   --md-ref-typeface-plain: var(--font-geist-sans);
 
-  --md-ref-typeface-weight-medium: var();
   --md-ref-typeface-weight-regular: var(--md-ref-font-weight-2);
+  --md-ref-typeface-weight-medium: var(--md-ref-font-weight-3);
 
   /*
   Custom weight scale
