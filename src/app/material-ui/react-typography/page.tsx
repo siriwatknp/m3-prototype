@@ -1,10 +1,21 @@
 "use client";
 
-import Typography from "@/components/Typography/Typography";
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Paragraph,
+  Span,
+  Link,
+} from "@/components/Typography/Typography";
 import { Leva } from "leva";
 import { useLevaOverrides } from "@/hooks/useLevaOverrides";
+import NextLink from "next/link";
 import { type TypographyVariant } from "@/components/Typography/Typography";
-import Link from "next/link";
+import Button from "@/components/Button/Button";
 
 // Define the variants array
 const variants: TypographyVariant[] = [
@@ -256,83 +267,285 @@ const typographyFolders: Record<string, string[]> = {
 
 export default function Page() {
   useLevaOverrides(defaultValues, {
-    dataAttribute: "data-typography-override",
+    dataAttribute: "data-typography2-override",
     folders: typographyFolders,
   });
 
   return (
     <div className="prose dark:prose-invert max-w-[700px] mx-auto py-5 px-2">
       <Leva oneLineLabels />
-      <h1>Typography Example</h1>
+      <h1>Typography Example (Version 2)</h1>
 
       <h2>All Variants</h2>
       <div
-        data-typography-override
+        data-typography2-override
         className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800"
       >
-        {variants.map((variant) => (
-          <Typography key={variant} variant={variant}>
-            {variant} - The quick brown fox jumps.
-          </Typography>
-        ))}
+        <H1 variant="display-large">
+          display-large - The quick brown fox jumps.
+        </H1>
+        <H1 variant="display-medium">
+          display-medium - The quick brown fox jumps.
+        </H1>
+        <H1 variant="display-small">
+          display-small - The quick brown fox jumps.
+        </H1>
+        <H1>headline-large - The quick brown fox jumps.</H1>
+        <H2>headline-medium - The quick brown fox jumps.</H2>
+        <H3>headline-small - The quick brown fox jumps.</H3>
+        <H4>title-large - The quick brown fox jumps.</H4>
+        <H5>title-medium - The quick brown fox jumps.</H5>
+        <H6>title-small - The quick brown fox jumps.</H6>
+        <Span variant="label-large">
+          label-large - The quick brown fox jumps.
+        </Span>
+        <Span variant="label-medium">
+          label-medium - The quick brown fox jumps.
+        </Span>
+        <Span variant="label-small">
+          label-small - The quick brown fox jumps.
+        </Span>
+        <Span variant="body-large">
+          body-large - The quick brown fox jumps.
+        </Span>
+        <Span>body-medium - The quick brown fox jumps.</Span>
+        <Span variant="body-small">
+          body-small - The quick brown fox jumps.
+        </Span>
       </div>
 
       <h2>Semantic Elements</h2>
       <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
-        <Typography variant="headline-large" component="h1">
-          Heading 1
-        </Typography>
-        <Typography variant="body-large" component="p">
+        <H1 variant="headline-large">Heading 1</H1>
+        <Span variant="body-large" component="p">
           Paragraph with body-large style
-        </Typography>
-        <Typography variant="label-medium" component="label">
+        </Span>
+        <Span variant="label-medium" component="label">
           Label text
-        </Typography>
+        </Span>
       </div>
 
       <h2>Colors</h2>
       <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
-        <Typography variant="headline-small" color="primary">
+        <H3 variant="headline-small" color="primary">
           Primary Color Text
-        </Typography>
-        <Typography variant="headline-small" color="secondary">
+        </H3>
+        <H3 variant="headline-small" color="secondary">
           Secondary Color Text
-        </Typography>
-        <Typography variant="headline-small" color="tertiary">
+        </H3>
+        <H3 variant="headline-small" color="tertiary">
           Tertiary Color Text
-        </Typography>
-        <Typography variant="headline-small" color="error">
+        </H3>
+        <H3 variant="headline-small" color="error">
           Error Color Text
-        </Typography>
-        <Typography variant="headline-small" color="on-surface">
+        </H3>
+        <H3 variant="headline-small" color="on-surface">
           On Surface Color Text
-        </Typography>
+        </H3>
       </div>
 
-      <h2>Link</h2>
+      <h2>Link Underline</h2>
       <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
-        <Typography>
-          <Link href="#">Default Link</Link>
-        </Typography>
-        <Typography underline="none" color="primary">
-          <Link href="#">No underline link</Link>
-        </Typography>
-        <Typography underline="hover" color="primary">
-          <Link href="#">Hover underline link</Link>
-        </Typography>
-        <Typography underline="always" color="primary">
-          <Link href="#">Always underline link</Link>
-        </Typography>
-        <Typography variant="body-small">
+        <Link href="#" underline="none">
+          No underline link
+        </Link>
+        <Link href="#" underline="hover">
+          Hover underline link
+        </Link>
+        <Link href="#" underline="always">
+          Always underline link
+        </Link>
+        <Paragraph variant="body-medium">
           By clicking "Accept", you agree to our{" "}
-          <Typography underline="hover" color="error">
-            <Link href="/terms">Terms of Service</Link>
-          </Typography>{" "}
+          <Link href="/terms" color="error" underline="hover">
+            Terms of Service
+          </Link>{" "}
           and{" "}
-          <Typography underline="hover" color="error">
-            <Link href="/privacy">Privacy Policy</Link>
-          </Typography>
-        </Typography>
+          <Link href="/privacy" color="error">
+            Privacy Policy
+          </Link>
+        </Paragraph>
+      </div>
+
+      <h2>Display</h2>
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+        <H2 color="primary" variant="display-small">
+          Cortado iced
+        </H2>
+
+        <Paragraph>
+          Enter my new flame: the iced cortado. A cortado is an espresso with an
+          equal amount of steamed milk. I drink it when I want a caffeine
+          pick-me-up without the bitterness or acidity of pure espresso.
+        </Paragraph>
+
+        <hr className="mt-2 border-t border-slate-200 dark:border-slate-600" />
+
+        <Button variant="text" className="w-fit">
+          Expand
+        </Button>
+      </div>
+
+      <h2>Label</h2>
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+        <div className="space-y-4">
+          <Span variant="label-large" color="secondary">
+            Shop popular categories:
+          </Span>
+
+          <div className="flex flex-wrap gap-3">
+            {/* Category Pills */}
+            <button className="rounded-md border border-gray-200 px-3 py-1.5 flex items-center hover:bg-gray-50">
+              <Span variant="label-medium">Cameras</Span>
+            </button>
+
+            <button className="rounded-md bg-[#EEF1FF] px-3 py-1.5 flex items-center gap-2">
+              <Span variant="label-medium">Game consoles</Span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+              </svg>
+            </button>
+
+            <button className="rounded-md border border-gray-200 px-3 py-1.5 flex items-center hover:bg-gray-50">
+              <Span variant="label-medium">Laptops</Span>
+            </button>
+
+            <button className="rounded-md border border-gray-200 px-3 py-1.5 flex items-center hover:bg-gray-50">
+              <Span variant="label-medium">Phones</Span>
+            </button>
+
+            <button className="rounded-md border border-gray-200 px-3 py-1.5 flex items-center hover:bg-gray-50">
+              <Span variant="label-medium">Tablets</Span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h2>Navigation</h2>
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+        <nav className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+          <ul className="flex justify-between items-center">
+            {/* News */}
+            <li>
+              <button className="flex flex-col items-center gap-2 group">
+                <div className="bg-[#EEF1FF] dark:bg-indigo-900/50 p-3 rounded-full">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    className="text-indigo-700 dark:text-indigo-300"
+                    fill="currentColor"
+                  >
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                  </svg>
+                </div>
+                <Span
+                  variant="label-medium"
+                  className="text-gray-700 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                >
+                  News
+                </Span>
+              </button>
+            </li>
+
+            {/* Global */}
+            <li>
+              <button className="flex flex-col items-center gap-2 group">
+                <div className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    className="text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                    fill="currentColor"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                  </svg>
+                </div>
+                <Span
+                  variant="label-medium"
+                  className="text-gray-700 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                >
+                  Global
+                </Span>
+              </button>
+            </li>
+
+            {/* For You */}
+            <li>
+              <button className="flex flex-col items-center gap-2 group">
+                <div className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    className="text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                    fill="currentColor"
+                  >
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                </div>
+                <Span
+                  variant="label-medium"
+                  className="text-gray-700 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                >
+                  For You
+                </Span>
+              </button>
+            </li>
+
+            {/* Trending */}
+            <li>
+              <button className="flex flex-col items-center gap-2 group">
+                <div className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    className="text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                    fill="currentColor"
+                  >
+                    <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z" />
+                  </svg>
+                </div>
+                <Span
+                  variant="label-medium"
+                  className="text-gray-700 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                >
+                  Trending
+                </Span>
+              </button>
+            </li>
+
+            {/* Archive */}
+            <li>
+              <button className="flex flex-col items-center gap-2 group">
+                <div className="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    className="text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                    fill="currentColor"
+                  >
+                    <path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
+                  </svg>
+                </div>
+                <Span
+                  variant="label-medium"
+                  className="text-gray-700 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300"
+                >
+                  Archive
+                </Span>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

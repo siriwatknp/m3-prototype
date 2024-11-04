@@ -1,6 +1,15 @@
 .MuiTypography-root {
   margin: 0;
   padding: 0;
+  &:where(a, span) {
+    display: inline-block;
+  }
+}
+
+.MuiTypography-inline {
+  display: inline-block;
+  font: inherit;
+  letter-spacing: inherit;
 }
 
 .MuiTypography-display-large {
@@ -386,7 +395,7 @@
 
 .MuiTypography-underline-hover {
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, currentColor 20%, transparent);
+  text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
 
   &:hover {
     text-decoration-color: currentColor;
@@ -395,15 +404,4 @@
 
 .MuiTypography-underline-always {
   text-decoration: underline;
-}
-
-.MuiTypography-root:where([class*="MuiTypography-underline"]) a {
-  text-decoration: inherit;
-}
-
-/* Nested typography, need to stay at the bottom of the styles */
-:where(.MuiTypography-root) .MuiTypography-root {
-  display: inline-block;
-  font: inherit;
-  letter-spacing: inherit;
 }
