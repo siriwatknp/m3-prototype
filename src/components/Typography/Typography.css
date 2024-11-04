@@ -405,3 +405,54 @@
 .MuiTypography-underline-always {
   text-decoration: underline;
 }
+
+/* Blockquote styles */
+.MuiTypography-root:where(blockquote) {
+  position: relative;
+  margin: var(--md-ref-spacing-6) 0;
+  padding: var(--md-ref-spacing-4) var(--md-ref-spacing-6);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-primary) 4%,
+    transparent
+  );
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  &::before {
+    position: absolute;
+    display: block;
+    content: "";
+    left: 4px;
+    height: calc(100% - 8px);
+    top: 4px;
+    width: 4px;
+    background: var(--md-sys-color-primary);
+    border-radius: var(--md-sys-shape-corner-full);
+  }
+}
+
+/* Code styles */
+.MuiTypography-root:where(code):not(pre code) {
+  padding: 0.2em 0.4em;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  color: var(--md-sys-color-primary);
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-surface-tint) 8%,
+    transparent
+  );
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 0.875em;
+  line-height: 1.25;
+}
+
+/* Kbd styles */
+.MuiTypography-root:where(kbd) {
+  padding: 0.2em 0.4em;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  border: 1px solid var(--md-sys-color-outline);
+  box-shadow: var(--md-sys-elevation-level1);
+  background-color: var(--md-sys-color-surface-container-high);
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 0.875em;
+  line-height: 1.25;
+}

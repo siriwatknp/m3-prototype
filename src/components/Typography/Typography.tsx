@@ -38,7 +38,10 @@ function createText<Element = HTMLElement>(
     | "p"
     | "span"
     | "a"
-    | "div",
+    | "div"
+    | "blockquote"
+    | "code"
+    | "kbd",
   name: string
 ) {
   const semanticToVariant = {
@@ -51,7 +54,10 @@ function createText<Element = HTMLElement>(
     p: "body-medium",
     span: "inline",
     a: "inline",
+    code: "inline",
+    kbd: "inline",
     div: "body-medium",
+    blockquote: "body-large",
   } as const;
   const Typography = forwardRef<
     Element,
@@ -102,6 +108,12 @@ export const H6 = createText<HTMLHeadingElement>("h6", "H6");
 export const Paragraph = createText<HTMLParagraphElement>("p", "Paragraph");
 export const Span = createText<HTMLSpanElement>("span", "Span");
 export const Link = createText<HTMLAnchorElement>("a", "Link");
+export const Blockquote = createText<HTMLQuoteElement>(
+  "blockquote",
+  "Blockquote"
+);
+export const Code = createText<HTMLElement>("code", "Code");
+export const Kbd = createText<HTMLElement>("kbd", "Kbd");
 
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /**

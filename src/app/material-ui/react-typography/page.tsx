@@ -10,6 +10,9 @@ import {
   Paragraph,
   Span,
   Link,
+  Blockquote,
+  Code,
+  Kbd,
 } from "@/components/Typography/Typography";
 import { Leva } from "leva";
 import { useLevaOverrides } from "@/hooks/useLevaOverrides";
@@ -546,6 +549,91 @@ export default function Page() {
             </li>
           </ul>
         </nav>
+      </div>
+
+      <h2>Code & Terminal</h2>
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+        <div className="space-y-4">
+          <Paragraph>
+            To install the package, run <Code>npm install @material/web</Code>{" "}
+            in your terminal.
+          </Paragraph>
+
+          <Paragraph>
+            Press <Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> to copy or <Kbd>Ctrl</Kbd> +{" "}
+            <Kbd>V</Kbd> to paste.
+          </Paragraph>
+
+          <div className="space-y-2">
+            <Paragraph variant="body-large">
+              Common terminal commands:
+            </Paragraph>
+            <div className="pl-4 space-y-2">
+              <Paragraph>
+                <Code>cd</Code> - Change directory
+              </Paragraph>
+              <Paragraph>
+                <Code>ls</Code> - List files
+              </Paragraph>
+              <Paragraph>
+                <Code>mkdir</Code> - Create directory
+              </Paragraph>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Blockquotes</h2>
+      <div className="not-prose flex flex-col gap-4 rounded-lg border dark:border-slate-700 py-6 px-4 bg-slate-50 dark:bg-slate-800">
+        <Blockquote>
+          Design is not just what it looks like and feels like. Design is how it
+          works.
+          <Span
+            variant="label-medium"
+            color="secondary"
+            component="footer"
+            className="mt-2"
+          >
+            — Steve Jobs
+          </Span>
+        </Blockquote>
+
+        <Blockquote>
+          <Paragraph variant="body-large">Material Design 3</Paragraph>
+          <Paragraph>
+            Material 3 is the latest version of Google's open-source design
+            system. It brings new features that help teams build high-quality
+            digital experiences.
+          </Paragraph>
+          <Link
+            href="https://m3.material.io"
+            color="primary"
+            underline="hover"
+            className="mt-2 block"
+          >
+            Learn more about Material 3
+          </Link>
+        </Blockquote>
+
+        <div className="space-y-4">
+          <Paragraph variant="body-large">
+            Code example with explanation:{" "}
+            <Code>const [count, setCount] = useState(0);</Code>
+          </Paragraph>
+        </div>
+
+        <div className="space-y-4">
+          <Paragraph variant="body-large">
+            Keyboard shortcut with explanation:
+          </Paragraph>
+          <div className="flex items-center gap-2">
+            <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>P</Kbd>
+          </div>
+          <Paragraph className="mt-2">
+            Opens the command palette in VS Code, allowing quick access to all
+            commands. <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>P</Kbd>
+          </Paragraph>
+        </div>
       </div>
     </div>
   );
